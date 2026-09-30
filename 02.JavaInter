@@ -162,7 +162,534 @@ MySQL
 
 /////////////////////////////////////////////////////////////////////////////////
 
->Multiple Inheritance in Java
->
+>>>Multiple Inheritance in Java
+answer>>>>“Java does not support multiple inheritance through classes, but it supports multiple inheritance through interfaces.”
+>Multiple inheritance means one class inherits from more than one parent class.
+class A {
+}
+
+class B {
+}
+
+class C extends A, B {   // ❌ Not allowed
+}
+Java does not support multiple inheritance through classes.
+
+>>Why?
+
+Because of the Diamond Problem.
+
+If both A and B have the same method, Java would not know which method C should inherit.
+Example:
+class C implements A, B
+///////////////////////////////////////////////////////////////////////////////////////
+Interface vs Abstract Class
+
+>>What is an Abstract Class?
+An abstract class is a class that cannot be directly instantiated and can contain both abstract methods and concrete methods.
+abstract class Animal {
+
+    abstract void sound();
+
+    void eat() {
+        System.out.println("Animal is eating");
+    }
+}
+
+sound() → abstract method
+eat() → normal/concrete method
+...............
+What is an Interface?
+
+An interface is a blueprint that defines a contract that implementing classes must follow.
+
+interface Animal {
+
+    void sound();
+}
+...........................
+interface Animal {
+
+    void sound();
+}
+A class implements it:
+
+class Dog implements Animal {
+
+    public void sound() {
+        System.out.println("Dog barks");
+    }
+}
 
 
+“An abstract class is a partially implemented class that can contain both abstract and concrete methods, whereas an interface defines a contract that a class must implement. Java allows a class to extend only one abstract class but implement multiple interfaces.”
+Main Difference
+Abstract Class	                                          Interface
+Declared using abstract class	                        Declared using interface
+Class uses extends	                                       Class uses implements
+Can have abstract + concrete methods	                    Mainly used to define a contract
+Can have instance variables	                             Variables are public static final by default
+A class can extend only one class                  	A class can implement multiple interfaces
+Can have constructors	                     Cannot have constructors
+////////////////////////////////////////////////////////////////////////////////////////////
+
+??You mean Wrapper Class and Primitive Data Types in Java.
+
+>>You mean **Wrapper Class and Primitive Data Types** in Java.
+
+### 1. Primitive Data Types
+
+Primitive types are the **basic data types provided by Java**. They store simple values directly.
+
+There are **8 primitive types**:
+
+```text
+byte
+short
+int
+long
+float
+double
+char
+boolean
+```
+
+Example:
+
+```java
+int age = 25;
+double salary = 50000.50;
+char grade = 'A';
+boolean active = true;
+```
+
+---
+
+### 2. Wrapper Classes
+
+Wrapper classes are **object versions of primitive data types**.
+
+| Primitive | Wrapper Class |
+| --------- | ------------- |
+| `byte`    | `Byte`        |
+| `short`   | `Short`       |
+| `int`     | `Integer`     |
+| `long`    | `Long`        |
+| `float`   | `Float`       |
+| `double`  | `Double`      |
+| `char`    | `Character`   |
+| `boolean` | `Boolean`     |
+
+Example:
+
+```java
+int a = 10;              // primitive
+
+Integer b = 10;          // wrapper object
+```
+
+### Why do we need Wrapper Classes?
+
+Because **collections work with objects**, not primitives.
+
+❌
+
+```java
+ArrayList<int> list; 
+```
+
+✅
+
+```java
+ArrayList<Integer> list = new ArrayList<>();
+```
+
+### Autoboxing and Unboxing
+
+**Autoboxing:** primitive → wrapper
+
+```java
+int a = 10;
+Integer b = a;
+```
+
+**Unboxing:** wrapper → primitive
+
+```java
+Integer x = 20;
+int y = x;
+```
+
+### 🎯 Interview Answer
+
+> **“Primitive data types are basic data types that store simple values, while wrapper classes provide object representations of primitive types. Wrapper classes are useful when we need to work with primitives as objects, such as in collections.”**
+////////////////////////////////////////////////////////////////
+????### What are SQL Joins?
+
+**SQL Joins are used to combine data from two or more tables based on a related column.**
+
+### Types of Joins:
+
+1. **INNER JOIN** → Returns only matching records from both tables.
+2. **LEFT JOIN** → Returns all records from the left table and matching records from the right table.
+3. **RIGHT JOIN** → Returns all records from the right table and matching records from the left table.
+4. **FULL JOIN** → Returns all records from both tables, matching or not.
+
+### 🎯 Interview Answer
+
+> **“Joins are used in SQL to combine data from multiple tables based on a related column.”**
+//////////////////////////////////////////////////////////////////////////////////
+?????### GROUP BY
+
+`GROUP BY` is used to **group rows having the same value**.
+
+Example:
+
+```sql
+SELECT department, COUNT(*)
+FROM employee
+GROUP BY department;
+```
+
+It counts employees in each department.
+
+### HAVING
+
+`HAVING` is used to **filter the groups created by `GROUP BY`**.
+
+```sql
+SELECT department, COUNT(*)
+FROM employee
+GROUP BY department
+HAVING COUNT(*) > 5;
+```
+
+It shows only departments having **more than 5 employees**.
+
+### 🎯 Short Interview Answer
+
+> **“GROUP BY is used to group similar records, while HAVING is used to filter those groups.”**
+
+**Remember:**
+`WHERE` → filters **rows**
+`HAVING` → filters **groups**
+/////////////////////////////////////////////////////
+????### Primary Key, Foreign Key & Unique Key
+
+**1. Primary Key 🔑**
+Uniquely identifies each record in a table. It **cannot be NULL** and cannot have duplicate values.
+
+```sql
+id INT PRIMARY KEY
+```
+
+**2. Foreign Key 🔗**
+Used to create a relationship between two tables. It refers to the **Primary Key of another table**.
+
+```sql
+department_id INT,
+FOREIGN KEY (department_id) REFERENCES department(id)
+```
+
+**3. Unique Key**
+Ensures that all values in a column are **unique**. Unlike a primary key, a `UNIQUE` column can generally contain **NULL** (database-specific rules apply).
+
+```sql
+email VARCHAR(100) UNIQUE
+```
+
+### 🎯 Short Interview Answer
+
+> **Primary Key:** Uniquely identifies each record and cannot be NULL.
+> **Foreign Key:** Connects two tables by referencing a key in another table.
+> **Unique Key:** Ensures that values in a column are not duplicated.
+/////////////////////////////////////////////////////////////////////////////////
+????what is finalize mathod 
+### What is `finalize()` method in Java?
+
+`finalize()` was a method used by the **Garbage Collector** before an object was removed from memory. It was traditionally used for cleanup of resources.
+
+```java
+@Override
+protected void finalize() throws Throwable {
+    System.out.println("Object is being removed");
+}
+```
+
+### Important ⚠️
+
+`finalize()` is **deprecated since Java 9** and should **not be used in modern Java applications**. Its execution is also **not guaranteed**.
+
+### 🎯 Short Interview Answer
+
+> **“The `finalize()` method was used by the Garbage Collector to perform cleanup before an object was garbage collected, but it is deprecated and should not be used in modern Java.”**
+//////////////////////////////////////////////////////////////
+??### Constructor vs Method in Java
+
+**Constructor:**
+A constructor is a special block used to **initialize an object**. It has the **same name as the class** and **does not have a return type**.
+
+```java
+class Student {
+    Student() {
+        System.out.println("Constructor called");
+    }
+}
+```
+
+**Method:**
+A method is used to **perform a specific operation or behavior**. It can have a return type.
+
+```java
+class Student {
+    void study() {
+        System.out.println("Student is studying");
+    }
+}
+```
+
+### Main Difference
+
+| Constructor                                 | Method                           |
+| ------------------------------------------- | -------------------------------- |
+| Initializes an object                       | Performs an operation            |
+| Same name as class                          | Can have any valid name          |
+| No return type                              | Can have a return type           |
+| Called automatically when object is created | Called explicitly                |
+| Cannot be inherited                         | Can be inherited                 |
+| Can be overloaded                           | Can be overloaded and overridden |
+
+### 🎯 Interview Answer
+
+> **“A constructor is used to initialize an object when it is created, whereas a method is used to perform a specific operation or behavior.”**
+///////////////////////////////////////////////////////////////////////////////////////
+???### What is JDBC?
+
+**JDBC (Java Database Connectivity)** is a **Java API used to connect Java applications with databases** and perform operations like **INSERT, UPDATE, DELETE, and SELECT**.
+
+### Simple Flow
+
+```text
+Java Application
+       ↓
+      JDBC
+       ↓
+    Database
+   (MySQL)
+```
+
+### Example
+
+```java
+Connection con = DriverManager.getConnection(url, username, password);
+
+PreparedStatement ps =
+    con.prepareStatement("SELECT * FROM users");
+
+ResultSet rs = ps.executeQuery();
+```
+
+Here:
+
+* `Connection` → connects Java with the database
+* `PreparedStatement` → executes SQL queries
+* `ResultSet` → stores the result of a `SELECT` query
+
+### 🎯 Short Interview Answer
+
+> **“JDBC is a Java API that provides a standard way to connect Java applications with databases and execute SQL queries.”**
+////////////////////////////////////////////////////////////////////////////////
+
+### Collection vs Collections in Java
+
+These two are different, and this is a common interview question.
+
+### 1. Collection
+
+`Collection` is an **interface** in Java.
+
+It represents a group of objects and provides common methods such as:
+
+```java
+add()
+remove()
+contains()
+size()
+```
+
+Examples:
+
+```java
+List
+Set
+Queue
+```
+
+Example:
+
+```java
+Collection<Integer> c = new ArrayList<>();
+
+c.add(10);
+c.add(20);
+```
+
+### 2. Collections
+
+`Collections` is a **utility class** in Java.
+
+It provides useful methods for working with collections, such as:
+
+```java
+Collections.sort()
+Collections.reverse()
+Collections.max()
+Collections.min()
+```
+
+Example:
+
+```java
+List<Integer> list = new ArrayList<>();
+
+list.add(30);
+list.add(10);
+list.add(20);
+
+Collections.sort(list);
+```
+
+Result:
+
+```text
+[10, 20, 30]
+```
+
+### 🎯 Interview Answer
+
+> **“Collection is an interface that represents a group of objects, whereas Collections is a utility class that provides static methods to perform operations on collections.”**
+
+**Easy trick:**
+**Collection = Interface**
+**Collections = Utility Class**
+/////////////////////////////////////////////////////////////////////////////////////
+If you mean **SQL commands**, there are mainly **5 types**:
+
+1. **DDL** – Defines database structure
+   `CREATE`, `ALTER`, `DROP`, `TRUNCATE`
+
+2. **DML** – Modifies data
+   `INSERT`, `UPDATE`, `DELETE`
+
+3. **DQL** – Retrieves data
+   `SELECT`
+
+4. **DCL** – Controls permissions
+   `GRANT`, `REVOKE`
+
+5. **TCL** – Manages transactions
+   `COMMIT`, `ROLLBACK`, `SAVEPOINT`
+
+### 🎯 Short interview answer
+
+> **“SQL commands are used to create and modify database structures, insert and retrieve data, control access, and manage transactions.”**
+//////////////////////////////////////////////////////////////////////////////////////
+### What is Garbage Collection in Java?
+
+**Garbage Collection (GC)** is an automatic memory management process in Java that **removes objects that are no longer being used** and releases their memory.
+
+### Simple Example
+
+```java
+Student s1 = new Student();
+
+s1 = null;
+```
+
+Now the original `Student` object has **no reference**, so it becomes eligible for **Garbage Collection**.
+
+### Important Points
+
+* Garbage Collection is handled automatically by the **JVM**.
+* It removes **unused/unreachable objects**.
+* It helps prevent unnecessary memory usage.
+* We don't manually delete objects like in some languages.
+* `System.gc()` can request GC, but **does not guarantee** that GC will run.
+
+### 🎯 Interview Answer
+
+> **“Garbage Collection is an automatic memory management process in Java that identifies and removes unreachable objects from memory.”**
+//////////////////////////////////////////////////////////////////
+
+You mean **default method and static method in a Java interface**.
+
+### 1. Default Method
+
+A **default method** is a method inside an interface that has a **body/implementation**.
+
+```java
+interface Animal {
+
+    default void sound() {
+        System.out.println("Animal makes sound");
+    }
+}
+```
+
+A class can use it without implementing the method:
+
+```java
+class Dog implements Animal {
+}
+```
+
+```java
+Dog d = new Dog();
+d.sound();
+```
+
+**Why?**
+Default methods were introduced to allow adding new methods to interfaces **without breaking existing implementing classes**.
+
+---
+
+### 2. Static Method
+
+A **static method** in an interface belongs to the **interface itself**, not to the implementing class.
+
+```java
+interface Animal {
+
+    static void info() {
+        System.out.println("This is Animal interface");
+    }
+}
+```
+
+Call it using the interface name:
+
+```java
+Animal.info();
+```
+
+❌ You cannot call it through an object:
+
+```java
+Dog d = new Dog();
+d.info(); // Error
+```
+
+### Main Difference
+
+| Default Method                         | Static Method               |
+| -------------------------------------- | --------------------------- |
+| Has implementation                     | Has implementation          |
+| Can be inherited by implementing class | Not inherited               |
+| Called using object                    | Called using interface name |
+| Can be overridden                      | Cannot be overridden        |
+
+### 🎯 Interview Answer
+
+> **“A default method in an interface provides a default implementation that implementing classes can inherit or override, whereas a static method belongs to the interface itself and is called using the interface name.”**
+///////////////////////////////
+DONE THIS INTERVIEWS
