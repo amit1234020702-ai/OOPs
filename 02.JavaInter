@@ -1,1 +1,168 @@
+1>clone() method
+
+>“The clone() method in Java is used to create and return a copy of an existing object.”
+class Student implements Cloneable {
+    int age = 25;
+
+    public static void main(String[] args) throws CloneNotSupportedException {
+
+        Student s1 = new Student();
+
+        Student s2 = (Student) s1.clone();
+
+        System.out.println(s2.age);
+    }
+}
+/////////////////////////////////////////////////////////////////////////////////////
+2>Custom Exception in Java
+
+>“Custom exception is a user-defined exception that we create to handle application-specific errors.”
+class EmailAlreadyExistsException extends RuntimeException {
+
+    public EmailAlreadyExistsException(String message) {
+        super(message);
+    }
+}
+then
+if (userRepository.existsByEmail(email)) {
+    throw new EmailAlreadyExistsException("Email already exists");
+}
+//////////////////////////////////////////////////////////////////////////////////////
+3>Checked Exception vs Unchecked Exception
+
+>“Checked exceptions are checked by the compiler and must be either handled using try-catch or declared using the throws keyword. Unchecked exceptions occur at runtime and are not mandatory to handle. Checked exceptions usually represent recoverable conditions, while unchecked exceptions generally indicate programming errors.”
+
+1. Checked Exception
+Examples: IOException, SQLException, ClassNotFoundException
+try {
+    FileReader file = new FileReader("test.txt");
+} catch (IOException e) {
+    System.out.println("File not found");
+}
+
+......................................
+2. Unchecked Exception
+An unchecked exception is not checked by the compiler. It occurs during runtime, and handling it is not mandatory.
+
+Examples: NullPointerException, ArithmeticException, ArrayIndexOutOfBoundsException
+int result = 10 / 0;
+
+Main Difference
+
+Checked exceptions are checked by the compiler and must be handled or declared, whereas unchecked exceptions occur at runtime and are not mandatory to handle.
+////////////////////////////////////////////////////////////////////////////////
+
+$$List vs Map in Java
+>“List stores elements in a collection and allows duplicate values, while Map stores data in key-value pairs where each key must be unique.”
+
+List vs Map in Java
+
+List                                                              Map
+Stores elements/values                                            Stores key-value pairs
+Allows duplicate elements                                       	Keys must be unique
+Maintains order depending on implementation	                      Order depends on implementation
+Uses index to access elements                                   	Uses key to access values
+list.get(0)	                                                      map.get(key)
+Examples: ArrayList, LinkedList	                                  Examples: HashMap, TreeMap
+
+List:
+List<String> list = new ArrayList<>();
+
+list.add("Amit");
+list.add("Rahul");
+list.add("Amit");
+
+
+Map:
+Map<Integer, String> map = new HashMap<>();
+
+map.put(1, "Amit");
+map.put(2, "Rahul");
+///////////////////////////////////////////////////////////////////////////////////
+
+ArrayList vs HashSet in Java
+
+>“ArrayList allows duplicate elements, maintains insertion order, and provides index-based access, whereas HashSet stores only unique elements and does not guarantee insertion order.”
+ArrayList:
+ArrayList<Integer> list = new ArrayList<>();
+
+list.add(10);
+list.add(20);
+list.add(10);
+
+System.out.println(list);
+
+
+HashSet:
+HashSet<Integer> set = new HashSet<>();
+
+set.add(10);
+set.add(20);
+set.add(10);
+
+System.out.println(set);
+
+
+
+List vs Map in Java
+List                                                   	Map
+Stores elements/values	                                Stores key-value pairs
+Allows duplicate elements                              	Keys must be unique
+Maintains order depending on implementation            	Order depends on implementation
+Uses index to access elements                         	Uses key to access values
+list.get(0)                                           	map.get(key)
+Examples: ArrayList, LinkedList                       	Examples: HashMap, TreeMap
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+>>What is Hibernate?
+
+>Hibernate is a Java ORM (Object-Relational Mapping) framework that helps us interact with a database using Java objects instead of writing SQL queries manually.
+@Entity
+public class Student {
+
+    @Id
+    private int id;
+
+    private String name;
+    private String email;
+}
+
+answer Student
+-----------------
+id
+name
+email
+
+INSERT INTO student VALUES (1, 'Amit', 'amit@gmail.com');
+
+Why do we use Hibernate?
+Reduces the amount of SQL code
+Maps Java classes → database tables
+Maps Java objects → table records
+Handles CRUD operations
+Supports relationships like OneToOne, OneToMany, ManyToOne
+Provides transaction management and caching features
+.................................
+Hibernate vs JPA
+
+This is important for interviews:
+
+JPA is a specification, while Hibernate is an implementation of JPA.
+
+For example, in Spring Boot we commonly use:
+
+Spring Boot
+     ↓
+Spring Data JPA
+     ↓
+Hibernate
+     ↓
+MySQL
+
+/////////////////////////////////////////////////////////////////////////////////
+
+>Multiple Inheritance in Java
+>
+
 
