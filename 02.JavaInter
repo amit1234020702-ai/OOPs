@@ -1,6 +1,6 @@
 1>clone() method
 
->“The clone() method in Java is used to create and return a copy of an existing object.”
+>“The clone() method in Java is used to create and return a copy of an existing object.”  
 class Student implements Cloneable {
     int age = 25;
 
