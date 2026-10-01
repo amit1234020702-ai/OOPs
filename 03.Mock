@@ -1,3 +1,107 @@
 ??rate in java
 
 “I would rate myself 8 out of 10 in Java. I have a good understanding of Core Java, OOPs, Collections, Exception Handling, JDBC, and I also have hands-on experience with Spring Boot and REST APIs. I’m continuously improving my knowledge through projects and DSA practice.
+/////////////////////////////////////////////////////////////////////////
+?? what is dependency??
+“Dependency means a relationship where one class or component depends on another class or component to perform its work. For example, if a UserController needs UserService, then UserController has a dependency on UserService. In Spring Boot, dependencies are usually managed by the Spring container using Dependency Injection.”
+@Service
+class UserService {
+}
+
+@RestController
+class UserController {
+
+    @Autowired
+    UserService userService;
+}
+
+>>>>>>UserController → depends on → UserService
+/////////////////////////////////////////////////////////////////////////
+??abstract class vs interface
+For an interview, give this **short and simple answer**:
+
+> **“The main difference between an abstract class and an interface is that an abstract class can have both abstract and non-abstract methods, while an interface mainly defines a contract that classes must follow. A class can extend only one abstract class, but it can implement multiple interfaces.”**
+
+### Quick example:
+
+```java
+abstract class Animal {
+    abstract void sound();
+
+    void eat() {
+        System.out.println("Eating");
+    }
+}
+
+interface Flyable {
+    void fly();
+}
+```
+
+**Easy to remember:**
+
+* **Abstract class →** `extends` → only **one**
+* **Interface →** `implements` → **multiple**
+* **Abstract class →** can have variables, constructors, concrete methods
+* **Interface →** used mainly for **contract/abstraction**
+
+////////////////////////////////////////////////////////////////
+### Q: What is the difference between Collection and Array in Java?
+
+**Answer:**
+
+> **“An array has a fixed size and can store both primitive and object types, whereas a Collection has a dynamic size and stores objects. Collections also provide built-in methods for operations like adding, removing, and searching elements.”**
+
+**Easy difference:**
+
+| Array                       | Collection                    |
+| --------------------------- | ----------------------------- |
+| Fixed size                  | Dynamic size                  |
+| Primitive + objects         | Only objects                  |
+| Less built-in functionality | Many built-in methods         |
+| Example: `int[] arr`        | Example: `ArrayList<Integer>` |
+
+🎯 **Interview line:**
+
+> “Array is used when the size is fixed, while Collection is preferred when we need a dynamic size and more operations.”
+////////////////////////////////////////////////////////////////////////////////////
+### Q: What is the difference between ArrayList and Vector in Java?
+
+**Answer:**
+
+> **“Both ArrayList and Vector are dynamic arrays. The main difference is that ArrayList is not synchronized, while Vector is synchronized. Therefore, ArrayList is generally faster, whereas Vector is thread-safe.”**
+
+**Easy difference:**
+
+| ArrayList               | Vector                                           |
+| ----------------------- | ------------------------------------------------ |
+| Not synchronized        | Synchronized                                     |
+| Faster                  | Slower                                           |
+| Introduced in Java 1.2  | Legacy class                                     |
+| Preferred in most cases | Used when synchronization is specifically needed |
+
+🎯 **Interview line:**
+
+> **“ArrayList is generally preferred because it is faster, while Vector provides built-in synchronization.”**
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+### Q: What is the difference between List and Set in Java?
+
+**Answer:**
+
+> **“List allows duplicate elements and maintains insertion order, while Set does not allow duplicate elements. Depending on the implementation, Set may or may not maintain order.”**
+
+**Easy difference:**
+
+| List                        | Set                             |
+| --------------------------- | ------------------------------- |
+| Allows duplicates           | Does not allow duplicates       |
+| Maintains insertion order   | Order depends on implementation |
+| Supports index-based access | No index-based access           |
+| Example: `ArrayList`        | Example: `HashSet`              |
+
+🎯 **Interview line:**
+
+> **“List is used when duplicates and order are required, while Set is used when we need unique elements.”**
+///////////////////////////////////////////////////////////////////////////////////////////
+
