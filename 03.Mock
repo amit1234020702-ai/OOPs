@@ -262,4 +262,336 @@ If multiple threads call `increment()`, **only one thread can execute it at a ti
 > **“Java 8 introduced modern programming features like Lambda and Stream API, while Java 17 provides newer language features, better performance, security, and is also an LTS version.”**
 /////////////////////////////////////////////////////////////////////////
 
+### Q: Why is String immutable in Java?
+
+**Answer:**
+
+> **“String is immutable in Java, which means once a String object is created, its value cannot be changed. If we modify a String, Java creates a new String object instead of changing the existing one.”**
+
+### Example:
+
+```java
+String s = "Hello";
+s = s + " World";
+```
+
+Here, `"Hello"` is **not changed**. A new String `"Hello World"` is created.
+
+### Why is String immutable?
+
+1. **Security** – useful for passwords, URLs, file paths, etc.
+2. **String Pool** – allows safe sharing of String objects.
+3. **Thread Safety** – immutable objects are naturally thread-safe.
+4. **Hashing** – String's hashcode can be safely cached, making it useful as a `HashMap` key.
+
+🎯 **Interview one-liner:**
+
+> **“String is immutable for security, thread safety, String Pool optimization, and reliable hashing.”**
+///////////////////////////////////////////////////////////////////////////////
+### Q: What is Security in Spring Boot? Why and how do we use it?
+
+**Answer:**
+
+> **“Spring Security is a framework used to secure Spring Boot applications. It provides authentication and authorization, so we can control who can access the application and what they are allowed to do.”**
+
+### Why do we use Spring Security?
+
+* **Authentication** → Who are you? (Login)
+* **Authorization** → What are you allowed to access?
+* Protects APIs from **unauthorized access**
+* Supports **JWT, OAuth2, roles, permissions**, etc.
+
+### How do we use it?
+
+Add Spring Security dependency:
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+```
+
+Then configure security:
+
+```java
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    @Bean
+    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/login").permitAll()
+                .anyRequest().authenticated()
+            );
+
+        return http.build();
+    }
+}
+```
+
+### 🎯 Interview one-liner
+
+> **“Spring Security is used to protect our application by handling authentication and authorization and restricting unauthorized users from accessing protected resources.”**
+
+**Remember:**
+**Authentication = Who are you?** 🔐
+**Authorization = What can you access?** 🔑
+////////////////////////////////////////////////////////////////////////////
+
+
+## Q: What is Authentication?
+
+**Answer:**
+
+> **“Authentication is the process of verifying the identity of a user. It checks whether the user is really who they claim to be.”**
+
+### Example:
+
+Suppose you have a login page:
+
+```text
+Username: amit
+Password: 12345
+```
+
+The system checks these credentials.
+
+* If correct → **Authentication successful**
+* If incorrect → **Authentication failed**
+
+### Common ways of Authentication:
+
+* Username & Password
+* OTP
+* JWT Token
+* Fingerprint
+* OAuth / Google Login
+
+### Easy to remember:
+
+> **Authentication = Who are you?**
+
+---
+
+## Q: What is Authorization?
+
+**Answer:**
+
+> **“Authorization is the process of checking what an authenticated user is allowed to access or perform.”**
+
+Authorization happens **after authentication**.
+
+### Example:
+
+Suppose there are two users:
+
+```text
+Amit → ADMIN
+Rahul → USER
+```
+
+Both successfully log in.
+
+Now:
+
+* Amit can **add, update, and delete products**
+* Rahul can only **view products**
+
+This permission checking is called **Authorization**.
+
+### Easy to remember:
+
+> **Authorization = What can you do?**
+
+---
+
+### 🔥 Authentication vs Authorization
+
+| Authentication        | Authorization                |
+| --------------------- | ---------------------------- |
+| Checks **identity**   | Checks **permissions**       |
+| “Who are you?”        | “What can you do?”           |
+| Happens first         | Happens after authentication |
+| Login                 | Roles/Permissions            |
+| Example: Password/JWT | Example: ADMIN/USER          |
+
+### 🎯 Best Interview Answer
+
+> **“Authentication verifies the identity of a user, while authorization determines what that authenticated user is allowed to access or perform.”**
+////////////////////////////////////////////////////////////////////////
+### Q: What is the scope of a Bean in Spring?
+
+**Answer:**
+
+> **“Bean scope defines the lifecycle and the number of instances of a Spring Bean created by the Spring container.”**
+
+In simple words, **Bean Scope tells us how many objects Spring will create and how long those objects will live.**
+
+### Main Bean Scopes
+
+#### 1. Singleton — Default
+
+> Only **one instance** of the bean is created per Spring container.
+
+```java
+@Service
+public class UserService {
+}
+```
+
+By default, `UserService` is a **Singleton**.
+
+👉 **One object → shared by multiple requests**
+
+---
+
+#### 2. Prototype
+
+> Spring creates a **new object every time** the bean is requested.
+
+```java
+@Scope("prototype")
+@Component
+public class UserService {
+}
+```
+
+👉 **Every request → new object**
+
+---
+
+#### 3. Request
+
+> A new bean is created for **each HTTP request**.
+
+```java
+@Scope("request")
+```
+
+👉 **One HTTP request → one object**
+
+---
+
+#### 4. Session
+
+> A new bean is created for **each HTTP session**.
+
+```java
+@Scope("session")
+```
+
+👉 **One user session → one object**
+
+---
+
+### 🎯 Interview One-Liner
+
+> **“Bean scope defines how many instances of a bean Spring creates and how long those instances live. The default scope is Singleton.”**
+
+### ⭐ Most Important for Interviews
+
+Remember these two first:
+
+**Singleton → one object**
+**Prototype → new object every time**
+/////////////////////////////////////////////////////////////////////////////
+### Q: What is `SpringBootApplication` in Spring Boot?
+
+**Answer:**
+
+> **“`@SpringBootApplication` is a main annotation in Spring Boot that is used to mark the main class of the application. It enables auto-configuration, component scanning, and Spring configuration.”**
+
+### Example:
+
+```java
+@SpringBootApplication
+public class MyApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(MyApplication.class, args);
+    }
+}
+```
+
+### What does `@SpringBootApplication` contain?
+
+It is a combination of **3 annotations**:
+
+1. **`@Configuration`**
+   → Tells Spring that this class contains configuration.
+
+2. **`@EnableAutoConfiguration`**
+   → Spring Boot automatically configures required things based on dependencies.
+
+3. **`@ComponentScan`**
+   → Scans packages for classes like `@Controller`, `@Service`, `@Repository`, etc.
+
+### 🎯 Easy Interview Answer
+
+> **“`@SpringBootApplication` is a combination of `@Configuration`, `@EnableAutoConfiguration`, and `@ComponentScan`. It is normally placed on the main class of a Spring Boot application.”**
+
+**Easy trick:**
+`@SpringBootApplication` = **Configuration + Auto Configuration + Component Scanning**.
+
+///////////////////////////////////////////////////////////////////////////
+### Q: What is Synchronization and Non-Synchronization in Java?
+
+### 1. What is Synchronization?
+
+> **“Synchronization is a mechanism that controls access to shared resources when multiple threads are working at the same time. It allows only one thread at a time to access the critical section.”**
+
+**Example:**
+
+```java
+synchronized void increment() {
+    count++;
+}
+```
+
+Here, only **one thread at a time** can execute `increment()`.
+
+👉 **Synchronization = One thread at a time**
+👉 Helps prevent **data inconsistency**.
+
+---
+
+### 2. What is Non-Synchronization?
+
+> **“Non-synchronization means multiple threads can access a shared resource at the same time without any locking mechanism.”**
+
+Example:
+
+```java
+void increment() {
+    count++;
+}
+```
+
+Multiple threads can execute this method simultaneously.
+
+👉 **Non-synchronization = Multiple threads can access at the same time**
+👉 It can cause **data inconsistency** when they modify shared data.
+
+---
+
+### 🔥 Difference
+
+| Synchronization                       | Non-Synchronization         |
+| ------------------------------------- | --------------------------- |
+| One thread at a time                  | Multiple threads can access |
+| Thread-safe for the protected section | May not be thread-safe      |
+| Slower due to locking                 | Usually faster              |
+| Prevents race conditions              | Can cause race conditions   |
+
+### 🎯 Interview Answer
+
+> **“Synchronization controls concurrent access to shared resources and allows one thread at a time, while non-synchronization allows multiple threads to access the resource simultaneously.”**
+
+////////////////////////////////////////////////////////////////////////////
+
+
+
 
