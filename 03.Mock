@@ -104,4 +104,162 @@ interface Flyable {
 
 > **“List is used when duplicates and order are required, while Set is used when we need unique elements.”**
 ///////////////////////////////////////////////////////////////////////////////////////////
+### Q: Which interface do you use for sorting in Java?
+
+**Answer:**
+
+> **“We use the `Comparable` and `Comparator` interfaces for sorting in Java. Comparable is used for natural or default sorting, while Comparator is used when we need custom sorting.”**
+
+**Easy difference:**
+
+* `Comparable` → **Default/Natural sorting** → `compareTo()`
+* `Comparator` → **Custom sorting** → `compare()`
+
+🎯 **Interview example:**
+
+> “If I want to sort employees by their name, age, or salary differently, I would use the `Comparator` interface.”
+////////////////////////////////////////////////////////////////////////////////////////////
+### Q: What is the difference between Comparable and Comparator in Java?
+
+**Answer:**
+
+> **“Comparable is used for natural or default sorting, while Comparator is used for custom sorting. Comparable uses the `compareTo()` method, whereas Comparator uses the `compare()` method.”**
+
+| Comparable                      | Comparator                       |
+| ------------------------------- | -------------------------------- |
+| Natural/default sorting         | Custom sorting                   |
+| `compareTo()`                   | `compare()`                      |
+| Package: `java.lang`            | Package: `java.util`             |
+| Implemented by the class itself | Usually implemented separately   |
+| One main sorting logic          | Multiple sorting logics possible |
+
+### 🎯 Easy Example
+
+```java
+class Student implements Comparable<Student> {
+    int age;
+
+    public int compareTo(Student s) {
+        return this.age - s.age;
+    }
+}
+```
+
+Here, students are sorted by **age** using `Comparable`.
+
+```java
+Comparator<Student> c = (s1, s2) -> s1.age - s2.age;
+```
+
+Here, sorting logic is provided separately using `Comparator`.
+
+**Interview one-liner:**
+
+> **“Comparable defines the default sorting logic inside the class, while Comparator allows us to define different custom sorting logics outside the class.”**
+////////////////////////////////////////////////////////////////////////////////
+### Q: What is IoC in Spring?
+
+**Answer:**
+
+> **“IoC stands for Inversion of Control. It means that the control of creating and managing objects is given to the Spring container instead of the developer.”**
+
+### Simple Example:
+
+Without Spring:
+
+```java
+UserService service = new UserService();
+```
+
+With Spring:
+
+```java
+@Autowired
+UserService service;
+```
+
+Here, **Spring creates and manages the `UserService` object**.
+
+🎯 **Interview one-liner:**
+
+> **“IoC means Spring takes control of object creation and management instead of us creating objects manually.”**
+
+**Remember:**
+**IoC → Spring creates & manages objects**
+**DI → Spring injects those objects where needed**
+////////////////////////////////////////////////////////////////////////////////
+### Q: How many ways can we create a thread in Java?
+
+**Answer:**
+
+> **“There are mainly two ways to create a thread in Java: by extending the `Thread` class and by implementing the `Runnable` interface.”**
+
+### 1. By extending `Thread`
+
+```java
+class MyThread extends Thread {
+    public void run() {
+        System.out.println("Thread is running");
+    }
+}
+```
+
+### 2. By implementing `Runnable`
+
+```java
+class MyTask implements Runnable {
+    public void run() {
+        System.out.println("Thread is running");
+    }
+}
+```
+
+🎯 **Interview one-liner:**
+
+> **“We can create a thread by extending the Thread class or implementing the Runnable interface. In practice, Runnable is generally preferred because Java supports single inheritance.”**
+//////////////////////////////////////////////////////////////////
+### Q: What is the `synchronized` keyword in Java?
+
+**Answer:**
+
+> **“The `synchronized` keyword is used to control access to shared resources when multiple threads are running. It allows only one thread at a time to execute the synchronized method or block, which helps prevent data inconsistency.”**
+
+### Simple Example:
+
+```java
+class Counter {
+    synchronized void increment() {
+        // critical section
+    }
+}
+```
+
+If multiple threads call `increment()`, **only one thread can execute it at a time**.
+
+🎯 **Interview one-liner:**
+
+> **“`synchronized` provides thread safety by allowing only one thread at a time to access a critical section.”**
+//////////////////////////////////////////////////////////////////////////////
+### Q: What is the difference between Java 8 and Java 17?
+
+**Answer:**
+
+> **“Java 8 is an older LTS version that introduced important features like Lambda expressions, Stream API, and functional interfaces. Java 17 is a newer LTS version with improved performance, security, and several new language features like sealed classes, records, and pattern matching for `instanceof`.”**
+
+### Easy Difference
+
+| Java 8                | Java 17                           |
+| --------------------- | --------------------------------- |
+| Released in 2014      | Released in 2021                  |
+| Lambda expressions    | Records                           |
+| Stream API            | Sealed classes                    |
+| Functional interfaces | Pattern matching for `instanceof` |
+| Older LTS             | Newer LTS                         |
+| Less modern features  | Better performance & security     |
+
+🎯 **Interview one-liner:**
+
+> **“Java 8 introduced modern programming features like Lambda and Stream API, while Java 17 provides newer language features, better performance, security, and is also an LTS version.”**
+/////////////////////////////////////////////////////////////////////////
+
 
