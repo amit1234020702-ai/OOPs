@@ -1,3 +1,29 @@
+Tumhare diye hue notes mein **15 unique interview questions/topics** hain. Duplicate **List vs Map** ko ek hi question count kiya hai.
+
+1. What is the `clone()` method in Java?
+2. What is a Custom Exception in Java?
+3. What is the difference between Checked and Unchecked Exceptions?
+4. What is the difference between List and Map in Java?
+5. What is the difference between ArrayList and HashSet?
+6. What is Hibernate?
+7. What is Multiple Inheritance in Java?
+8. What is the difference between Interface and Abstract Class?
+9. What are Primitive Data Types and Wrapper Classes?
+10. What are SQL Joins?
+11. What is GROUP BY and HAVING?
+12. What is the difference between Primary Key, Foreign Key, and Unique Key?
+13. What is the `finalize()` method in Java?
+14. What is the difference between Constructor and Method?
+15. What is JDBC?
+16. What is the difference between Collection and Collections?
+17. What are the types of SQL Commands?
+18. What is Garbage Collection in Java?
+19. What is the difference between Default Method and Static Method in an Interface?
+
+**Total = 19 unique questions.**
+
+
+////////////////////////////////////////////////////////////////////////////////////
 1>clone() method
 
 >“The clone() method in Java is used to create and return a copy of an existing object.”  
