@@ -1,3 +1,40 @@
+Sure. Ab tak jo **Java + Spring Boot interview questions** tumne pooche hain, unke **sirf questions**:
+
+### Java Interview Questions
+
+1. How would you rate yourself in Java out of 10?
+2. What is a dependency?
+3. What is the difference between an Abstract Class and an Interface?
+4. What is the difference between Collection and Array?
+5. What is the difference between ArrayList and Vector?
+6. What is the difference between List and Set?
+7. Which interface is used for sorting in Java?
+8. What is the difference between Comparable and Comparator?
+9. What is IoC?
+10. How many ways can you create a thread in Java?
+11. What is the `synchronized` keyword?
+12. Why is String immutable in Java?
+13. What is the difference between Java 8 and Java 17?
+14. What is Synchronization and Non-Synchronization?
+
+### Spring Boot Interview Questions
+
+15. What is Spring Security?
+16. Why do we use Spring Security?
+17. How do you use Spring Security?
+18. What is Authentication?
+19. What is Authorization?
+20. What is the difference between Authentication and Authorization?
+21. What is the scope of a Bean?
+22. What are the different Bean scopes in Spring?
+23. What is `@SpringBootApplication`?
+24. What are the three annotations included in `@SpringBootApplication`?
+
+
+
+/////////////////////////////////////////////////////////////////////////////////
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//////////////////////////////////////////////////////////////////////////////////
 ??rate in java
 
 “I would rate myself 8 out of 10 in Java. I have a good understanding of Core Java, OOPs, Collections, Exception Handling, JDBC, and I also have hands-on experience with Spring Boot and REST APIs. I’m continuously improving my knowledge through projects and DSA practice.
