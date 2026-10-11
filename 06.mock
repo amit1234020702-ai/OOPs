@@ -1,0 +1,331 @@
+
+☕ 1️⃣ CORE JAVA\
+\
+1️⃣ How does HashMap work internally?\
+\
+2️⃣ Why should we override "equals()" and "hashCode()" together?\
+\
+3️⃣ HashMap vs ConcurrentHashMap — what's the difference?\
+\
+4️⃣ Why is String immutable in Java?\
+\
+5️⃣ Interface vs Abstract Class?\
+\
+⚡ 2️⃣ MULTITHREADING\
+\
+1️⃣ "synchronized" vs "volatile"?\
+\
+2️⃣ What is a deadlock, and how can you prevent it?\
+\
+3️⃣ ExecutorService vs CompletableFuture?\
+\
+4️⃣ What are Virtual Threads in Java 21?\
+\
+🌱 3️⃣ SPRING BOOT\
+\
+1️⃣ What is Dependency Injection?\
+\
+2️⃣ "@Component" vs "@Service" vs "@Repository"?\
+\
+3️⃣ How does "@Transactional" work?\
+\
+4️⃣ What is the N+1 query problem?\
+\
+5️⃣ How does JWT authentication work?\
+\
+🗄️ 4️⃣ SQL & DATABASE\
+\
+1️⃣ INNER JOIN vs LEFT JOIN?\
+\
+2️⃣ How do indexes improve query performance?\
+\
+3️⃣ Explain ACID properties.\
+\
+4️⃣ What are transaction isolation levels?\
+\
+5️⃣ How would you optimize a slow SQL query?\
+\
+🏗️ 5️⃣ SYSTEM DESIGN\
+\
+1️⃣ Design a URL shortener.\
+\
+2️⃣ How would you implement Redis caching?\
+\
+3️⃣ Design a rate limiter.\
+\
+4️⃣ How would you prevent duplicate API requests?\
+\
+5️⃣ How would you debug a slow production API?\
+\
+💬 6️⃣ HR & MANAGERIAL\
+\
+1️⃣ Tell me about a challenging production bug you fixed.\
+\
+2️⃣ Why do you want to join PwC?\
+\
+3️⃣ How do you handle tight deadlines?\
+\
+4️⃣ Explain a technical decision and its trade-offs.\
+\
+🔥 Remember: Interviewers want more than definitions. Be ready to explain real-world applications, trade-offs, and problem-solving approaches.\
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+Amit, PwC ke Java Backend Developer interview mein aapko answers simple English + real example + practical use ke saath dene hain. Aap fresher ho, isliye difficult English bolne ki zarurat nahi hai. Technical concept clear hona chahiye.
+
+Neeche aapke 29 questions ke interview-ready answers hain.
+
+# 1. Core Java
+
+## Q1. How does HashMap work internally?
+
+HashMap stores data in key-value pairs. It uses the key's hash code to find the bucket where the data should be stored.
+
+If two keys go to the same bucket, HashMap handles the collision using a linked list or a balanced tree.
+
+HashMap provides average O(1) time for insertion and searching when hashes are distributed well.
+
+## Q2. Why should we override `equals()` and `hashCode()` together?
+
+We override both methods to compare objects correctly in HashMap and HashSet.
+
+If two objects are equal according to equals(), they must have the same hash code. Otherwise, hash-based collections may not work as expected.
+
+## Q3. HashMap vs ConcurrentHashMap
+
+HashMap is not thread-safe, while ConcurrentHashMap supports safe access by multiple threads.
+
+HashMap allows one null key, but ConcurrentHashMap does not allow null keys or null values.
+
+I use HashMap for normal operations and ConcurrentHashMap when multiple threads access shared data.
+
+## Q4. Why is String immutable in Java?
+
+String is immutable because its value cannot be changed after creation.
+
+It improves security, supports safe sharing between threads, and allows String objects to be reused through the String pool.
+
+For example, when we concatenate a String, Java creates a new String rather than changing the original one.
+
+## Q5. Interface vs Abstract Class
+
+An interface defines a contract that a class must follow. An abstract class can provide both common code and abstract methods.
+
+A class can implement multiple interfaces but extend only one class.
+
+I use interfaces for common behavior and abstract classes when related classes need to share code or state.
+
+# 2. Multithreading
+
+## Q6. `synchronized` vs `volatile`
+
+Synchronized allows only one thread at a time to execute a synchronized block for the same lock. It also provides visibility guarantees.
+
+Volatile makes changes to a variable visible to other threads, but it does not make compound operations like count++ atomic.
+
+I use synchronized when I need mutual exclusion and volatile for simple shared flags when its guarantees are sufficient.
+
+## Q7. What is a deadlock, and how can you prevent it?
+
+A deadlock happens when two or more threads wait for each other forever.
+
+For example, Thread A holds Lock 1 and waits for Lock 2, while Thread B holds Lock 2 and waits for Lock 1.
+
+We can prevent deadlocks by acquiring locks in a consistent order, avoiding unnecessary nested locks, and using timeouts where appropriate.
+
+## Q8. ExecutorService vs CompletableFuture
+
+ExecutorService manages a pool of threads and executes submitted tasks.
+
+CompletableFuture helps us work with asynchronous tasks, combine results, and handle errors.
+
+I use ExecutorService for managing task execution and CompletableFuture when I need to combine or chain asynchronous operations.
+
+## Q9. What are Virtual Threads in Java 21?
+
+Virtual threads were introduced as a standard feature in Java 21. They are lightweight threads managed by the Java runtime.
+
+They allow applications to handle many concurrent tasks without creating one expensive operating-system thread for every task.
+
+They are especially useful for applications that perform many blocking operations, such as API calls or database requests.
+
+# 3. Spring Boot
+
+## Q10. What is Dependency Injection?
+
+Dependency Injection means providing the required objects to a class instead of creating them manually inside that class.
+
+Spring manages these objects and injects them where needed.
+
+I prefer constructor injection because it makes dependencies clear and improves testability.
+
+## Q11. `@Component` vs `@Service` vs `@Repository`
+
+All three annotations register classes as Spring beans.
+
+@Component is a general annotation, @Service is used for business logic, and @Repository is used for database operations.
+
+They make the application easier to organize and maintain.
+
+## Q12. How does `@Transactional` work?
+
+The @Transactional annotation manages database transactions.
+
+It helps commit changes when an operation succeeds and roll back changes when a qualifying failure occurs.
+
+For example, when placing an order, I may need to save the order and update related data in the same transaction.
+
+## Q13. What is the N+1 query problem?
+
+The N+1 problem happens when one query fetches a list of records and then additional queries fetch related data for each record.
+
+For example, fetching 100 users and then querying each user's orders may result in 101 queries.
+
+We can reduce this problem using fetch joins, entity graphs, or batch fetching.
+
+## Q14. How does JWT authentication work?
+
+First, the user logs in with valid credentials. The server validates them and generates a JWT token.
+
+The client sends this token in the Authorization header with subsequent requests. The server validates the token and checks the user's permissions.
+
+In my Spring Boot project, I use JWT authentication and role-based authorization for ADMIN and NORMAL users.
+
+# 4. SQL & Database
+
+## Q15. INNER JOIN vs LEFT JOIN
+
+INNER JOIN returns only matching records from both tables.
+
+LEFT JOIN returns all records from the left table and matching records from the right table. If no match exists, the right-side columns contain NULL.
+
+## Q16. How do indexes improve query performance?
+
+Indexes help the database find records faster without scanning the entire table in many cases.
+
+They are useful for frequently searched columns and JOIN conditions.
+
+However, indexes require extra storage and can slow down INSERT, UPDATE, and DELETE operations.
+
+## Q17. Explain ACID properties.
+
+ACID stands for Atomicity, Consistency, Isolation, and Durability.
+
+Atomicity means all operations succeed or roll back. Consistency maintains database rules. Isolation controls concurrent transactions. Durability means committed changes persist.
+
+These properties help keep database transactions reliable.
+
+## Q18. What are transaction isolation levels?
+
+Transaction isolation levels control how transactions see changes made by other transactions.
+
+The four standard levels are Read Uncommitted, Read Committed, Repeatable Read, and Serializable.
+
+Higher isolation can prevent more concurrency problems but may reduce performance. The right level depends on the application's consistency requirements.
+
+## Q19. How would you optimize a slow SQL query?
+
+First, I would check the query execution plan using EXPLAIN.
+
+Then I would check indexes, optimize JOINs, avoid fetching unnecessary columns, and reduce unnecessary database calls.
+
+Finally, I would measure the performance again to confirm that the changes improved the query.
+
+# 5. System Design
+
+Fresher interview mein aapko perfect large-scale architecture dena zaroori nahi. Apna approach step by step explain karein.
+
+## Q20. Design a URL shortener.
+
+I would build a service that converts a long URL into a short URL.
+
+When a user submits a long URL, the service generates a unique short code and stores the mapping in a database. When someone opens the short URL, the service looks up the code and redirects the user to the original URL.
+
+I would also consider unique codes, caching, scalability, and protection against invalid URLs.
+
+## Q21. How would you implement Redis caching?
+
+I would use Redis to store frequently requested data in memory.
+
+When a request arrives, the application checks Redis first. If the data is available, it returns the cached value. Otherwise, it fetches the data from the database and stores it in Redis.
+
+I would use a suitable TTL and update or invalidate the cache when the underlying data changes.
+
+## Q22. Design a rate limiter.
+
+A rate limiter controls how many requests a user can make within a specific time.
+
+For example, I may allow a user to make 100 requests per minute. I can use Redis to track request counts and enforce the limit across multiple application instances.
+
+If the limit is exceeded, the API returns HTTP 429 Too Many Requests.
+
+## Q23. How would you prevent duplicate API requests?
+
+I would use an idempotency key for operations such as payments or order creation.
+
+The client sends a unique key with the request. The server stores the key and the result so that repeated requests with the same key do not create duplicate operations.
+
+I would also enforce database constraints where appropriate to protect against duplicates during concurrent requests.
+
+## Q24. How would you debug a slow production API?
+
+First, I would check logs, response times, and monitoring metrics to identify the slow part of the API.
+
+Then I would investigate database queries, external service calls, CPU and memory usage, and thread-pool issues.
+
+After identifying the root cause, I would make a targeted fix and compare performance before and after the change.
+
+# 6. HR & Managerial
+
+## Q25. Tell me about a challenging production bug you fixed.
+
+Aap fresher hain, toh agar production experience nahi hai, toh apne project ka actual bug batayein. Production experience hone ka false claim na karein.
+
+During my Spring Boot project, I faced a 401 Unauthorized error while testing a protected API through Swagger.
+
+I checked the JWT token, Authorization header, and Spring Security configuration. After identifying and fixing the authentication issue, I tested the API again.
+
+This experience taught me to debug problems step by step instead of making random changes.
+
+## Q26. Why do you want to join PwC?
+
+I want to join PwC because I am looking for an opportunity to learn, contribute, and grow as a software developer.
+
+I have a foundation in Java, Spring Boot, REST APIs, and MySQL. I want to apply these skills to real-world projects and learn from experienced professionals.
+
+I believe this role can help me improve my technical skills while contributing to the team.
+
+## Q27. How do you handle tight deadlines?
+
+I handle tight deadlines by staying calm and prioritizing important tasks.
+
+I break large tasks into smaller steps, focus on the most important work, and communicate early if I face any blockers.
+
+I also test my work properly to avoid unnecessary issues later.
+
+## Q28. Explain a technical decision and its trade-offs.
+
+In my Spring Boot project, I chose a layered architecture with Controller, Service, and Repository layers.
+
+It makes the code easier to maintain, test, and understand. However, it can introduce additional classes and some boilerplate code.
+
+I chose this approach because clear separation of responsibilities is useful for maintaining backend applications.
+
+## Ab ek real interview ki tarah practice karte hain
+
+Aapke liye best rahega ki main PwC interviewer ki tarah ek-ek question poochhun, aap English mein answer do, aur phir main aapka answer correct karun.
+
+Mock Interview · Question 1
+
+## How does HashMap work internally in Java?
+
+Answer English mein dene ki koshish karein. Aap 3–5 sentences bol sakte hain.
+
+Start Mock Interview
