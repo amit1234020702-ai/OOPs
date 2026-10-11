@@ -1,0 +1,300 @@
+🔥 ROUND 1 — CORE JAVA & DSA
+
+1. "==" vs ".equals()"
+2. How does HashMap work internally?
+3. Why override equals() and hashCode() together?
+4. Interface vs Abstract Class
+5. Overloading vs Overriding
+6. Explain Java 8 features, Streams and Lambdas.
+7. What is a Functional Interface?
+8. How do you create an immutable class?
+9. Find the second-highest number using Streams.
+10. Solve Two Sum.
+
+🔥 ROUND 2 — SPRING BOOT & HIBERNATE
+
+11. Spring vs Spring Boot
+12. Explain IoC and Dependency Injection.
+13. Explain Spring Bean Scopes.
+14. @Component vs @Service vs @Repository
+15. How does @Transactional work?
+16. How do you handle exceptions globally?
+17. Lazy vs Eager Loading
+18. What is the N+1 query problem?
+19. How do you secure REST APIs?
+
+🔥 ROUND 3 — SQL & DATABASES
+
+20. Find the second-highest salary using SQL.
+21. INNER JOIN vs LEFT JOIN
+22. WHERE vs HAVING
+23. Primary Key vs UNIQUE Key
+24. What are indexes?
+25. Explain ACID properties.
+26. How do you optimize a slow SQL query?
+
+🔥 ROUND 4 — ADVANCED JAVA & MICROSERVICES
+
+27. HashMap vs ConcurrentHashMap
+28. ArrayList vs LinkedList
+29. How do you create threads in Java?
+30. How do microservices communicate?
+31. What is the Circuit Breaker pattern?
+32. How does Redis caching work?
+
+🔥 ROUND 5 — MANAGERIAL / HR
+
+33. Explain your project architecture.
+34. Describe a challenging bug you fixed.
+35. Why do you want to join KPMG? interview me kese inka answer du engliah me batao
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Amit, main aapko saare 35 questions ke answers simple English mein bata raha hoon, taaki aap KPMG interview mein easily bol sako. Har answer 2–4 lines ka hai, aur difficult English words avoid kiye hain.
+
+# Round 1: Core Java & DSA
+
+## 1. `==` vs `.equals()`
+
+Simple answer
+
+The `==` operator compares values or object references. The `equals()` method compares the content of objects, if it is properly implemented.
+
+For example, two strings can have the same content but different references.
+
+## 2. How does HashMap work internally?
+
+HashMap stores data in key-value pairs. It uses the key's hash code to find where to store the data.
+
+If two keys go to the same location, HashMap handles the collision. It allows one null key and multiple null values.
+
+## 3. Why override `equals()` and `hashCode()` together?
+
+We override both methods to compare objects correctly in HashMap and HashSet.
+
+If two objects are equal according to `equals()`, they must have the same hash code.
+
+## 4. Interface vs Abstract Class
+
+An interface defines rules that a class must follow. An abstract class can provide both common code and abstract methods.
+
+A class can implement multiple interfaces but extend only one class.
+
+## 5. Overloading vs Overriding
+
+Overloading means using the same method name with different parameters.
+
+Overriding means a child class provides its own implementation of a parent class method.
+
+## 6. Explain Java 8 features, Streams and Lambdas.
+
+Java 8 introduced features like Lambda expressions, Stream API, and Functional Interfaces.
+
+Lambdas make code shorter, and Streams help us process data easily using methods like `filter()`, `map()`, and `sorted()`.
+
+## 7. What is a Functional Interface?
+
+A Functional Interface is an interface with exactly one abstract method.
+
+We can use a Lambda expression to implement it. For example, Runnable is a Functional Interface.
+
+## 8. How do you create an immutable class?
+
+An immutable class is a class whose object cannot be changed after creation.
+
+To create one, make the class final, fields private and final, initialize them through a constructor, and do not provide setter methods. Use defensive copies for mutable fields.
+
+## 9. Find the second-highest number using Streams.
+
+First, I remove duplicate numbers using `distinct()`. Then I sort the numbers in descending order and skip the highest number.
+
+The next number is the second-highest distinct number.
+
+## 10. Solve Two Sum.
+
+I use a HashMap to solve the Two Sum problem efficiently.
+
+For each number, I check whether the required remaining number already exists in the map. If it exists, I return both indices. The average time complexity is O(n).
+
+# Round 2: Spring Boot & Hibernate
+
+## 11. Spring vs Spring Boot
+
+Spring is a Java framework used to build applications.
+
+Spring Boot makes Spring development easier by providing auto-configuration, starter dependencies, and an embedded server.
+
+## 12. Explain IoC and Dependency Injection.
+
+IoC means Spring manages objects instead of us creating and managing everything manually.
+
+Dependency Injection means Spring provides the required objects to a class. It makes code easier to test and maintain.
+
+## 13. Explain Spring Bean Scopes.
+
+Bean scope defines how Spring creates and manages bean objects.
+
+Common scopes are Singleton, Prototype, Request, and Session. Singleton is the default scope in Spring.
+
+## 14. `@Component` vs `@Service` vs `@Repository`
+
+All three annotations are used to register classes as Spring beans.
+
+`@Component` is general, `@Service` is used for business logic, and `@Repository` is used for database operations.
+
+## 15. How does `@Transactional` work?
+
+`@Transactional` manages database transactions.
+
+It helps commit changes when an operation succeeds and roll back changes when a qualifying failure occurs. By default, unchecked exceptions trigger rollback.
+
+## 16. How do you handle exceptions globally?
+
+In Spring Boot, I use `@RestControllerAdvice` and `@ExceptionHandler` for global exception handling.
+
+They help return proper error messages and HTTP status codes, such as 404 when a user is not found.
+
+## 17. Lazy vs Eager Loading
+
+Lazy loading fetches related data when it is needed.
+
+Eager loading fetches related data as part of the initial loading strategy. We choose the approach based on our application requirements.
+
+## 18. What is the N+1 query problem?
+
+The N+1 problem happens when one query fetches a list of records and additional queries fetch related data for each record.
+
+We can reduce this problem using fetch joins, entity graphs, or batch fetching.
+
+## 19. How do you secure REST APIs?
+
+I use Spring Security and JWT for authentication and authorization.
+
+I also use BCrypt for password hashing and roles to control access. In my project, I have ADMIN and NORMAL user roles.
+
+# Round 3: SQL & Databases
+
+## 20. Find the second-highest salary using SQL.
+
+I use a subquery with the MAX function to find the second-highest distinct salary.
+
+First, I find the highest salary. Then I find the maximum salary below it.
+
+```
+SELECT MAX(salary)
+FROM employees
+WHERE salary < (
+    SELECT MAX(salary)
+    FROM employees
+);
+```
+
+## 21. INNER JOIN vs LEFT JOIN
+
+INNER JOIN returns only matching records from both tables.
+
+LEFT JOIN returns all records from the left table and matching records from the right table. If there is no match, it returns NULL for the right-side columns.
+
+## 22. WHERE vs HAVING
+
+WHERE filters rows before grouping.
+
+HAVING filters groups after GROUP BY. We commonly use HAVING with aggregate functions like COUNT and AVG.
+
+## 23. Primary Key vs UNIQUE Key
+
+A Primary Key uniquely identifies each row and does not allow NULL values.
+
+A UNIQUE constraint prevents duplicate values. A table has one primary key constraint but can have multiple UNIQUE constraints.
+
+## 24. What are indexes?
+
+An index helps a database find records faster.
+
+However, indexes use extra storage and can make INSERT, UPDATE, and DELETE operations slower because the indexes must also be updated.
+
+## 25. Explain ACID properties.
+
+ACID has four properties: Atomicity, Consistency, Isolation, and Durability.
+
+They help ensure that database transactions are reliable and data remains consistent.
+
+## 26. How do you optimize a slow SQL query?
+
+First, I check the query execution plan using EXPLAIN.
+
+Then I check indexes, optimize JOINs, avoid fetching unnecessary columns, and reduce unnecessary database queries. Finally, I test the query performance again.
+
+# Round 4: Advanced Java & Microservices
+
+## 27. HashMap vs ConcurrentHashMap
+
+HashMap is not thread-safe by itself.
+
+ConcurrentHashMap supports safe concurrent access by multiple threads. It does not allow null keys or null values.
+
+## 28. ArrayList vs LinkedList
+
+ArrayList uses a dynamic array and provides fast access by index.
+
+LinkedList uses linked nodes. Accessing an element by index is generally slower than in ArrayList. I usually prefer ArrayList for general list operations.
+
+## 29. How do you create threads in Java?
+
+We can create threads by extending the Thread class or implementing the Runnable interface.
+
+For real applications, we can use ExecutorService to manage a pool of threads and execute tasks efficiently.
+
+## 30. How do microservices communicate?
+
+Microservices communicate using REST APIs, gRPC, or message brokers like Kafka and RabbitMQ.
+
+REST is commonly used for direct communication, while message brokers support asynchronous communication.
+
+## 31. What is the Circuit Breaker pattern?
+
+The Circuit Breaker pattern prevents repeated calls to a failing service.
+
+It has three states: Closed, Open, and Half-Open. It helps prevent failures from spreading across microservices.
+
+## 32. How does Redis caching work?
+
+Redis stores data in memory for fast access.
+
+The application checks Redis first. If the data is not available, it fetches it from the database and may store it in Redis for future requests.
+
+# Round 5: Managerial & HR
+
+## 33. Explain your project architecture.
+
+I developed an Electronic Store Backend using Java, Spring Boot, and MySQL.
+
+It follows a layered architecture with Controller, Service, and Repository layers. I used Spring Data JPA for database operations, JWT for security, DTOs for data transfer, and global exception handling.
+
+The project supports users, products, categories, carts, and orders.
+
+## 34. Describe a challenging bug you fixed.
+
+I faced a 401 Unauthorized error while testing my REST API through Swagger.
+
+I checked the JWT token, Authorization header, and Spring Security configuration. After identifying and fixing the authentication issue, I tested the API again.
+
+This experience improved my debugging and problem-solving skills.
+
+## 35. Why do you want to join KPMG?
+
+I want to join KPMG because I want to start my career in a professional environment and learn from experienced people.
+
+I have knowledge of Java, Spring Boot, REST APIs, and MySQL. I want to use these skills in real-world projects, contribute to the team, and grow as a software developer.
+
+## Ab interview practice shuru karte hain
+
+Meri advice hai ki answers ko word-to-word ratne ke bajaye samajhkar bolna seekho. Main aapse ek-ek question poochhunga, aap English mein answer dena, aur main usko correct karke simple English mein improve karwaunga.
+
+Mock Interview · Question 1 of 35
+
+## What is the difference between `==` and `.equals()` in Java?
+
+Aap interviewer ko English mein answer do. Galti ho toh koi problem nahi—main correct karwa dunga.
+
+Answer in English
