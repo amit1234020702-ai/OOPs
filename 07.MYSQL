@@ -1,1 +1,1698 @@
+//update
 
+# MySQL UPDATE Command — Complete Guide with Questions and Answers
+
+The `UPDATE` command in MySQL is used to modify existing records in a table. It can change one column, multiple columns, one row, or multiple rows.
+
+## 1. Basic Syntax
+
+```
+UPDATE table_name
+SET column_name = value
+WHERE condition;
+```
+
+Example table: `students`
+
+| id | name  | age | city  | marks |
+| -- | ----- | --- | ----- | ----- |
+| 1  | Amit  | 25  | Delhi | 80    |
+| 2  | Rahul | 23  | Noida | 75    |
+| 3  | Priya | 24  | Pune  | 90    |
+| 4  | Neha  | 22  | Delhi | 85    |
+
+## 2. Important Types of UPDATE Queries
+
+### Type 1: Update a single column
+
+Change Amit's marks to 95.
+
+```
+UPDATE students
+SET marks = 95
+WHERE id = 1;
+```
+
+Result: Amit's marks change from 80 to 95.
+
+### Type 2: Update multiple columns
+
+Change Rahul's age and city.
+
+```
+UPDATE students
+SET age = 24, city = 'Delhi'
+WHERE id = 2;
+```
+
+### Type 3: Update using a specific condition
+
+Increase marks to 100 for students whose marks are below 80.
+
+```
+UPDATE students
+SET marks = 100
+WHERE marks < 80;
+```
+
+### Type 4: Update all rows
+
+Set every student's city to Mumbai.
+
+```
+UPDATE students
+SET city = 'Mumbai';
+```
+
+Warning: Without a `WHERE` clause, all rows will be updated.
+
+### Type 5: Update using `AND`
+
+Update marks for students who live in Delhi and have marks below 90.
+
+```
+UPDATE students
+SET marks = 95
+WHERE city = 'Delhi' AND marks < 90;
+```
+
+### Type 6: Update using `OR`
+
+Update marks for students who live in Delhi or Noida.
+
+```
+UPDATE students
+SET marks = 88
+WHERE city = 'Delhi' OR city = 'Noida';
+```
+
+### Type 7: Update using `IN`
+
+Update marks for students whose IDs are 1, 3, or 4.
+
+```
+UPDATE students
+SET marks = 99
+WHERE id IN (1, 3, 4);
+```
+
+### Type 8: Update using `BETWEEN`
+
+Set marks to 90 for students whose marks are between 70 and 85, inclusive.
+
+```
+UPDATE students
+SET marks = 90
+WHERE marks BETWEEN 70 AND 85;
+```
+
+### Type 9: Update using `LIKE`
+
+Change the city to Delhi for students whose names start with `A`.
+
+```
+UPDATE students
+SET city = 'Delhi'
+WHERE name LIKE 'A%';
+```
+
+### Type 10: Update using a calculation
+
+Increase every student's marks by 5.
+
+```
+UPDATE students
+SET marks = marks + 5;
+```
+
+This uses the existing value of `marks` to calculate the new value.
+
+## 3. Practice Questions with Answers
+
+Try to understand the question first, then check the solution.
+
+## 16 SQL Questions
+
+0 of 16 answers
+
+1\. Change Amit's marks to 90.
+
+Show answer
+
+2\. Change Priya's city to Delhi.
+
+Show answer
+
+3\. Increase Rahul's age to 25.
+
+Show answer
+
+4\. Change Neha's city to Mumbai and marks to 95.
+
+Show answer
+
+5\. Set marks to 100 for students scoring below 80.
+
+Show answer
+
+6\. Increase marks by 10 for all students.
+
+Show answer
+
+7\. Set marks to 90 for students living in Delhi.
+
+Show answer
+
+8\. Set age to 26 for students whose marks are at least 85.
+
+Show answer
+
+9\. Set city to Pune for students with IDs 1, 2, and 3.
+
+Show answer
+
+10\. Set marks to 95 for students whose names start with P.
+
+Show answer
+
+11\. Set marks to 80 for students scoring between 70 and 90.
+
+Show answer
+
+12\. Set the city to Noida for students living in Delhi and scoring above 80.
+
+Show answer
+
+13\. Set marks to 75 for students living in Delhi or Pune.
+
+Show answer
+
+14\. Change NULL city values to Delhi.
+
+Show answer
+
+15\. Reduce marks by 5 for every student.
+
+Show answer
+
+16\. Set marks to 100 for every student and order is not relevant.
+
+Show answer
+
+Show all answers
+
+## 4. Interview Questions and Answers
+
+Q1. What is the UPDATE command in MySQL?
+
+Answer: The UPDATE command is used to modify existing records in a database table.
+
+Q2. What is the purpose of the WHERE clause in UPDATE?
+
+Answer: The WHERE clause specifies which records should be updated. Without it, all records are updated.
+
+Q3. Can we update multiple columns in one query?
+
+Answer: Yes, we can update multiple columns by separating column assignments with commas.
+
+```
+UPDATE students
+SET age = 25, city = 'Delhi'
+WHERE id = 1;
+```
+
+Q4. What happens if we omit the WHERE clause?
+
+Answer: All rows in the table are updated.
+
+Q5. Can we use operators such as AND, OR, IN, and BETWEEN with UPDATE?
+
+Answer: Yes, these operators help specify which records should be updated.
+
+Q6. How do we update a record when a column contains NULL?
+
+Answer: Use `IS NULL` in the WHERE clause.
+
+```
+UPDATE students
+SET city = 'Delhi'
+WHERE city IS NULL;
+```
+
+Q7. How can we increase a column's value without knowing its current value?
+
+Answer: Use an expression such as `marks = marks + 5`.
+
+Q8. Can UPDATE change a primary key?
+
+Answer: Yes, it is possible, provided the new value satisfies primary-key constraints and any related foreign-key constraints. However, changing primary keys is generally avoided unless necessary.
+
+Q9. What is the difference between UPDATE and INSERT?
+
+Answer: UPDATE modifies existing records, whereas INSERT adds new records.
+
+Q10. How can we verify an UPDATE query?
+
+Answer: Run a SELECT query using the same condition.
+
+```
+SELECT * FROM students
+WHERE id = 1;
+```
+
+## 5. Best Practice: Avoid Accidental Updates
+
+Before updating records, check which rows will be affected:
+
+```
+SELECT * FROM students
+WHERE marks < 80;
+```
+
+Then execute the corresponding UPDATE query:
+
+```
+UPDATE students
+SET marks = 100
+WHERE marks < 80;
+```
+
+For important data, use a transaction where supported, so you can review changes before committing them.
+
+## 6. Quick Revision
+
+| SQL clause/operator | Purpose                              |
+| ------------------- | ------------------------------------ |
+| `SET`               | Specifies the new value              |
+| `WHERE`             | Selects rows to update               |
+| `AND`               | Both conditions must be true         |
+| `OR`                | At least one condition must be true  |
+| `IN`                | Matches any value in a list          |
+| `BETWEEN`           | Matches a range, including endpoints |
+| `LIKE`              | Matches a text pattern               |
+| `IS NULL`           | Finds NULL values                    |
+
+Interview tip: Always remember the difference between `UPDATE ... WHERE ...` and `UPDATE ...` without a WHERE clause. This is one of the most important things to understand before running UPDATE queries in a real database.
+////////////////////////////////////////////////////////////////////////////////////////
+//delete
+# MySQL DELETE Command — Complete Guide with Questions and Answers
+
+The `DELETE` command in MySQL is used to remove existing records (rows) from a table.
+
+## 1. Basic Syntax
+
+```
+DELETE FROM table_name
+WHERE condition;
+```
+
+- `DELETE FROM` specifies the table from which records will be removed.
+- `WHERE` specifies which records to delete.
+- Without `WHERE`, all rows in the table will be deleted.
+
+### Example: `students` table
+
+| id | name  | age | city  | marks |
+| -- | ----- | --- | ----- | ----- |
+| 1  | Amit  | 25  | Delhi | 80    |
+| 2  | Rahul | 23  | Noida | 75    |
+| 3  | Priya | 24  | Pune  | 90    |
+| 4  | Neha  | 22  | Delhi | 85    |
+
+## 2. Types of DELETE Queries
+
+### Type 1: Delete one record
+
+Delete Amit's record.
+
+```
+DELETE FROM students
+WHERE id = 1;
+```
+
+Result: The row with `id = 1` is removed.
+
+### Type 2: Delete using a name
+
+```
+DELETE FROM students
+WHERE name = 'Rahul';
+```
+
+Result: Rahul's record is deleted.
+
+### Type 3: Delete multiple records using a condition
+
+Delete students who have marks below 80.
+
+```
+DELETE FROM students
+WHERE marks < 80;
+```
+
+Result: Every row matching this condition is deleted.
+
+### Type 4: Delete using `AND`
+
+Delete students who live in Delhi and have marks below 85.
+
+```
+DELETE FROM students
+WHERE city = 'Delhi' AND marks < 85;
+```
+
+### Type 5: Delete using `OR`
+
+Delete students who live in Delhi or Pune.
+
+```
+DELETE FROM students
+WHERE city = 'Delhi' OR city = 'Pune';
+```
+
+### Type 6: Delete using `IN`
+
+Delete students whose IDs are 1, 2, or 4.
+
+```
+DELETE FROM students
+WHERE id IN (1, 2, 4);
+```
+
+### Type 7: Delete using `BETWEEN`
+
+Delete students whose marks are between 70 and 80, including both endpoints.
+
+```
+DELETE FROM students
+WHERE marks BETWEEN 70 AND 80;
+```
+
+### Type 8: Delete using `LIKE`
+
+Delete students whose names start with `A`.
+
+```
+DELETE FROM students
+WHERE name LIKE 'A%';
+```
+
+### Type 9: Delete records containing `NULL`
+
+Delete students whose city is unknown (`NULL`).
+
+```
+DELETE FROM students
+WHERE city IS NULL;
+```
+
+### Type 10: Delete all records
+
+```
+DELETE FROM students;
+```
+
+This removes all rows but keeps the table structure.
+
+Important: Always check your `WHERE` condition before executing a DELETE query. Without a `WHERE` clause, every row is deleted.
+
+## 3. Practice Questions with Answers
+
+Use the same `students` table shown above.
+
+## 16 SQL Practice Questions
+
+0/16 answers
+
+Try writing each query yourself before revealing its answer.
+
+1\. Delete Amit's record.
+
+Show answer
+
+2\. Delete the student whose ID is 3.
+
+Show answer
+
+3\. Delete all students who scored below 80.
+
+Show answer
+
+4\. Delete students who live in Delhi.
+
+Show answer
+
+5\. Delete students whose age is greater than 23.
+
+Show answer
+
+6\. Delete students who live in Delhi and scored below 90.
+
+Show answer
+
+7\. Delete students who live in Delhi or Noida.
+
+Show answer
+
+8\. Delete students whose IDs are 1, 2, and 4.
+
+Show answer
+
+9\. Delete students whose marks are between 75 and 90.
+
+Show answer
+
+10\. Delete students whose names start with N.
+
+Show answer
+
+11\. Delete students whose names end with a.
+
+Show answer
+
+12\. Delete students whose city is NULL.
+
+Show answer
+
+13\. Delete students whose marks are not equal to 80.
+
+Show answer
+
+14\. Delete students whose age is less than or equal to 22.
+
+Show answer
+
+15\. Delete all records from the students table.
+
+Show answer
+
+16\. Delete students who do not live in Delhi.
+
+Show answer
+
+Show all answers
+
+## 4. MySQL Interview Questions and Answers
+
+Q1. What is the DELETE command in MySQL?
+
+Answer: The DELETE command removes existing rows from a table.
+
+Q2. What happens if we use DELETE without WHERE?
+
+Answer: All rows are deleted, but the table structure remains.
+
+Q3. Can we delete multiple rows with one query?
+
+Answer: Yes. We can use conditions such as `<`, `IN`, `BETWEEN`, `AND`, and `OR`.
+
+Q4. What is the difference between DELETE and DROP?
+
+Answer:
+
+- `DELETE` removes rows from a table.
+- `DROP` removes the entire table, including its structure.
+
+Q5. What is the difference between DELETE and TRUNCATE?
+
+Answer:
+
+- `DELETE` removes selected rows when a `WHERE` clause is used.
+- `TRUNCATE` removes all rows and does not support a `WHERE` clause.
+- Their transaction and rollback behavior can differ depending on the storage engine and database configuration.
+
+Q6. Can we use WHERE with DELETE?
+
+Answer: Yes. The WHERE clause specifies which rows should be removed.
+
+Q7. Can we delete a record using its primary key?
+
+Answer: Yes.
+
+```
+DELETE FROM students
+WHERE id = 2;
+```
+
+Q8. How do we delete rows containing NULL values?
+
+Answer: Use `IS NULL`.
+
+```
+DELETE FROM students
+WHERE city IS NULL;
+```
+
+Q9. Can DELETE remove duplicate records?
+
+Answer: Yes, if the query's condition matches those rows. However, deleting duplicates safely requires identifying which rows to keep.
+
+Q10. What is the safest way to run DELETE?
+
+Answer: First check the matching rows with SELECT, then run DELETE using the same condition.
+
+```
+SELECT * FROM students
+WHERE marks < 80;
+
+DELETE FROM students
+WHERE marks < 80;
+```
+
+## 5. Difference Between DELETE, TRUNCATE, and DROP
+
+| Feature               | DELETE | TRUNCATE      | DROP                        |
+| --------------------- | ------ | ------------- | --------------------------- |
+| Removes rows          | Yes    | Yes, all rows | Removes table with its data |
+| Supports `WHERE`      | Yes    | No            | No                          |
+| Keeps table structure | Yes    | Yes           | No                          |
+| Removes selected rows | Yes    | No            | No                          |
+
+## 6. Important Safety Tip
+
+Before running a DELETE query on important data, preview the rows with `SELECT`. For additional protection, you can use a transaction with a transactional storage engine and verify the results before committing.
+
+Next topic: `ALTER` command — used to change a table's structure, such as adding, renaming, or modifying columns.
+///////////////////////////////////////////////////////////////
+# MySQL SELECT Command — Complete Guide with Questions and Answers
+
+The `SELECT` command in MySQL is used to retrieve or fetch data from a database table. It does not modify or delete records.
+
+## 1. Basic Syntax
+
+```
+SELECT column_name
+FROM table_name
+WHERE condition;
+```
+
+Let's use this `students` table for all examples.
+
+| id | name  | age | city   | marks |
+| -- | ----- | --- | ------ | ----- |
+| 1  | Amit  | 25  | Delhi  | 80    |
+| 2  | Rahul | 23  | Noida  | 75    |
+| 3  | Priya | 24  | Pune   | 90    |
+| 4  | Neha  | 22  | Delhi  | 85    |
+| 5  | Rohan | 21  | Mumbai | 65    |
+
+## 2. Types of SELECT Queries
+
+### Type 1: Select all columns
+
+Use `*` to retrieve every column.
+
+```
+SELECT * FROM students;
+```
+
+### Type 2: Select a single column
+
+```
+SELECT name FROM students;
+```
+
+Result: Amit, Rahul, Priya, Neha, Rohan.
+
+### Type 3: Select multiple columns
+
+```
+SELECT name, age, marks
+FROM students;
+```
+
+### Type 4: Use WHERE
+
+Retrieve students whose marks are greater than 80.
+
+```
+SELECT *
+FROM students
+WHERE marks > 80;
+```
+
+### Type 5: Use comparison operators
+
+```
+SELECT * FROM students WHERE marks = 80;
+
+SELECT * FROM students WHERE marks <> 80;
+
+SELECT * FROM students WHERE marks >= 80;
+
+SELECT * FROM students WHERE age < 25;
+```
+
+- `=` means equal to.
+- `<>` means not equal to.
+- `>` means greater than.
+- `<` means less than.
+- `>=` means greater than or equal to.
+- `<=` means less than or equal to.
+
+### Type 6: Use AND
+
+Find students who live in Delhi and have marks greater than 80.
+
+```
+SELECT *
+FROM students
+WHERE city = 'Delhi' AND marks > 80;
+```
+
+### Type 7: Use OR
+
+Find students who live in Delhi or Pune.
+
+```
+SELECT *
+FROM students
+WHERE city = 'Delhi' OR city = 'Pune';
+```
+
+### Type 8: Use IN
+
+Find students whose city is Delhi, Pune, or Mumbai.
+
+```
+SELECT *
+FROM students
+WHERE city IN ('Delhi', 'Pune', 'Mumbai');
+```
+
+### Type 9: Use BETWEEN
+
+Find students whose marks are between 70 and 90, including both endpoints.
+
+```
+SELECT *
+FROM students
+WHERE marks BETWEEN 70 AND 90;
+```
+
+### Type 10: Use LIKE
+
+Names starting with A:
+
+```
+SELECT * FROM students
+WHERE name LIKE 'A%';
+```
+
+Names ending with a:
+
+```
+SELECT * FROM students
+WHERE name LIKE '%a';
+```
+
+Names containing `oh`:
+
+```
+SELECT * FROM students
+WHERE name LIKE '%oh%';
+```
+
+### Type 11: Use ORDER BY
+
+Sort students by marks in ascending order.
+
+```
+SELECT *
+FROM students
+ORDER BY marks ASC;
+```
+
+Sort by marks in descending order:
+
+```
+SELECT *
+FROM students
+ORDER BY marks DESC;
+```
+
+`ASC` means ascending; `DESC` means descending.
+
+### Type 12: Use LIMIT
+
+Retrieve only the first three rows.
+
+```
+SELECT *
+FROM students
+LIMIT 3;
+```
+
+### Type 13: Use DISTINCT
+
+Retrieve each city only once.
+
+```
+SELECT DISTINCT city
+FROM students;
+```
+
+### Type 14: Use aggregate functions
+
+Find the total number of students.
+
+```
+SELECT COUNT(*) FROM students;
+```
+
+Find the highest marks:
+
+```
+SELECT MAX(marks) FROM students;
+```
+
+Find the lowest marks:
+
+```
+SELECT MIN(marks) FROM students;
+```
+
+Find the average marks:
+
+```
+SELECT AVG(marks) FROM students;
+```
+
+Find the total of all marks:
+
+```
+SELECT SUM(marks) FROM students;
+```
+
+### Type 15: Use GROUP BY
+
+Count the students in each city.
+
+```
+SELECT city, COUNT(*) AS total_students
+FROM students
+GROUP BY city;
+```
+
+### Type 16: Use HAVING
+
+Display cities having more than one student.
+
+```
+SELECT city, COUNT(*) AS total_students
+FROM students
+GROUP BY city
+HAVING COUNT(*) > 1;
+```
+
+Remember: `WHERE` filters individual rows before grouping, while `HAVING` filters groups after `GROUP BY`.
+
+## 3. SELECT Practice Questions with Answers
+
+Try each question before revealing the solution.
+
+## 20 Practice Questions
+
+0/20 answers
+
+These questions cover basic to intermediate SELECT queries.
+
+1\. Display all records from the students table.
+
+Show answer
+
+2\. Display only student names.
+
+Show answer
+
+3\. Display names and marks of all students.
+
+Show answer
+
+4\. Find students who scored more than 80 marks.
+
+Show answer
+
+5\. Find students who live in Delhi.
+
+Show answer
+
+6\. Find students whose age is less than 24.
+
+Show answer
+
+7\. Find students whose marks are at least 80.
+
+Show answer
+
+8\. Find students who live in Delhi and scored above 80.
+
+Show answer
+
+9\. Find students who live in Delhi or Mumbai.
+
+Show answer
+
+10\. Find students whose marks are between 70 and 90.
+
+Show answer
+
+11\. Find names starting with R.
+
+Show answer
+
+12\. Find students whose names end with a.
+
+Show answer
+
+13\. Display students in descending order of marks.
+
+Show answer
+
+14\. Display the three students with the lowest marks.
+
+Show answer
+
+15\. Display unique cities.
+
+Show answer
+
+16\. Count the total number of students.
+
+Show answer
+
+17\. Find the maximum marks.
+
+Show answer
+
+18\. Find the average marks.
+
+Show answer
+
+19\. Count the students in each city.
+
+Show answer
+
+20\. Display cities having more than one student.
+
+Show answer
+
+Show all answers
+
+## 4. MySQL Interview Questions and Answers
+
+Q1. What is the SELECT command?
+
+Answer: The SELECT command retrieves data from one or more database tables.
+
+Q2. What is the difference between SELECT \* and SELECT name?
+
+Answer: `SELECT *` retrieves all columns, while `SELECT name` retrieves only the name column.
+
+Q3. What is the WHERE clause?
+
+Answer: WHERE filters records according to a specified condition.
+
+Q4. What is DISTINCT?
+
+Answer: DISTINCT returns unique combinations of the selected column values.
+
+Q5. What is the difference between WHERE and HAVING?
+
+Answer: WHERE filters rows before grouping, while HAVING filters grouped results.
+
+Q6. What is ORDER BY?
+
+Answer: ORDER BY sorts query results in ascending or descending order.
+
+Q7. What is LIMIT?
+
+Answer: LIMIT restricts the number of rows returned by a query.
+
+Q8. What are aggregate functions?
+
+Answer: Aggregate functions calculate a single result from multiple rows. Examples include `COUNT()`, `SUM()`, `AVG()`, `MIN()`, and `MAX()`.
+
+Q9. What is GROUP BY?
+
+Answer: GROUP BY combines rows with the same values in specified columns, allowing aggregate calculations for each group.
+
+Q10. Can we use WHERE and ORDER BY together?
+
+Answer: Yes.
+
+```
+SELECT *
+FROM students
+WHERE marks >= 80
+ORDER BY marks DESC;
+```
+
+This retrieves students scoring at least 80 and sorts them from highest to lowest marks.
+
+## 5. Important SELECT Query Order
+
+Remember this order when writing queries:
+
+```
+SELECT city, AVG(marks) AS average_marks
+FROM students
+WHERE marks >= 70
+GROUP BY city
+HAVING AVG(marks) > 75
+ORDER BY average_marks DESC
+LIMIT 3;
+```
+
+Logical processing order:
+
+1. `FROM`
+2. `WHERE`
+3. `GROUP BY`
+4. `HAVING`
+5. `SELECT`
+6. `ORDER BY`
+7. `LIMIT`
+
+This is the logical processing order; it is not the order in which you write the SQL clauses.
+
+## 6. Quick Revision
+
+| Command/clause    | Purpose                       |
+| ----------------- | ----------------------------- |
+| `SELECT`          | Retrieve data                 |
+| `WHERE`           | Filter rows                   |
+| `DISTINCT`        | Return unique results         |
+| `ORDER BY`        | Sort results                  |
+| `LIMIT`           | Restrict result count         |
+| `COUNT()`         | Count rows or non-NULL values |
+| `MAX()` / `MIN()` | Find maximum/minimum          |
+| `AVG()` / `SUM()` | Calculate average/total       |
+| `GROUP BY`        | Group rows                    |
+| `HAVING`          | Filter groups                 |
+
+Recommended next topic: MySQL `ALTER` command, followed by `GROUP BY`, `HAVING`, and SQL JOINs for fresher interviews.
+///////////////////////////////////////////////////////////////////////////
+# MySQL WHERE Clause — Complete Guide with Questions and Answers
+
+The `WHERE` clause in MySQL is used to filter records based on a specified condition. It returns only the rows that match the condition.
+
+## 1. Basic Syntax
+
+```
+SELECT column_name
+FROM table_name
+WHERE condition;
+```
+
+We can use `WHERE` with `SELECT`, `UPDATE`, and `DELETE`.
+
+Let's use this `students` table for examples.
+
+| id | name  | age | city   | marks |
+| -- | ----- | --- | ------ | ----- |
+| 1  | Amit  | 25  | Delhi  | 80    |
+| 2  | Rahul | 23  | Noida  | 75    |
+| 3  | Priya | 24  | Pune   | 90    |
+| 4  | Neha  | 22  | Delhi  | 85    |
+| 5  | Rohan | 21  | Mumbai | 65    |
+
+## 2. Types of WHERE Conditions
+
+### Type 1: Equal to (`=`)
+
+Find the student whose city is Delhi.
+
+```
+SELECT *
+FROM students
+WHERE city = 'Delhi';
+```
+
+Result: Amit and Neha.
+
+### Type 2: Not equal to (`<>`)
+
+Find students who do not live in Delhi.
+
+```
+SELECT *
+FROM students
+WHERE city <> 'Delhi';
+```
+
+### Type 3: Greater than (`>`)
+
+Find students whose marks are greater than 80.
+
+```
+SELECT *
+FROM students
+WHERE marks > 80;
+```
+
+Result: Priya and Neha.
+
+### Type 4: Less than (`<`)
+
+```
+SELECT *
+FROM students
+WHERE age < 24;
+```
+
+### Type 5: Greater than or equal to (`>=`)
+
+```
+SELECT *
+FROM students
+WHERE marks >= 80;
+```
+
+### Type 6: Less than or equal to (`<=`)
+
+```
+SELECT *
+FROM students
+WHERE age <= 23;
+```
+
+### Type 7: AND operator
+
+Both conditions must be true.
+
+Find students who live in Delhi and have marks greater than 80.
+
+```
+SELECT *
+FROM students
+WHERE city = 'Delhi' AND marks > 80;
+```
+
+Result: Neha.
+
+### Type 8: OR operator
+
+At least one condition must be true.
+
+```
+SELECT *
+FROM students
+WHERE city = 'Delhi' OR city = 'Pune';
+```
+
+Result: Amit, Priya, and Neha.
+
+### Type 9: IN operator
+
+Find students living in Delhi, Pune, or Mumbai.
+
+```
+SELECT *
+FROM students
+WHERE city IN ('Delhi', 'Pune', 'Mumbai');
+```
+
+### Type 10: BETWEEN operator
+
+Find students whose marks are between 70 and 90, inclusive.
+
+```
+SELECT *
+FROM students
+WHERE marks BETWEEN 70 AND 90;
+```
+
+### Type 11: LIKE operator
+
+Names starting with A:
+
+```
+SELECT *
+FROM students
+WHERE name LIKE 'A%';
+```
+
+Names ending with a:
+
+```
+SELECT *
+FROM students
+WHERE name LIKE '%a';
+```
+
+Names containing `oh`:
+
+```
+SELECT *
+FROM students
+WHERE name LIKE '%oh%';
+```
+
+### Type 12: IS NULL
+
+Find students whose city is missing (`NULL`).
+
+```
+SELECT *
+FROM students
+WHERE city IS NULL;
+```
+
+Remember: Use `IS NULL`, not `= NULL`.
+
+### Type 13: NOT operator
+
+Find students who do not live in Delhi.
+
+```
+SELECT *
+FROM students
+WHERE NOT city = 'Delhi';
+```
+
+### Type 14: Combine multiple conditions
+
+Find students who live in Delhi and have marks between 80 and 90.
+
+```
+SELECT *
+FROM students
+WHERE city = 'Delhi'
+AND marks BETWEEN 80 AND 90;
+```
+
+## 3. Practice Questions with Answers
+
+Try to write the query yourself before revealing its answer.
+
+## 20 Practice Questions
+
+0/20 answers
+
+1\. Find the student named Amit.
+
+Show answer
+
+2\. Find students who live in Delhi.
+
+Show answer
+
+3\. Find students whose marks are greater than 75.
+
+Show answer
+
+4\. Find students whose age is less than 24.
+
+Show answer
+
+5\. Find students whose marks are at least 85.
+
+Show answer
+
+6\. Find students whose age is not 25.
+
+Show answer
+
+7\. Find students who live in Delhi and scored above 80.
+
+Show answer
+
+8\. Find students who live in Delhi or Mumbai.
+
+Show answer
+
+9\. Find students whose city is Delhi, Pune, or Noida.
+
+Show answer
+
+10\. Find students whose marks are between 75 and 90.
+
+Show answer
+
+11\. Find students whose names start with R.
+
+Show answer
+
+12\. Find students whose names end with a.
+
+Show answer
+
+13\. Find students whose names contain 'oh'.
+
+Show answer
+
+14\. Find students whose city is NULL.
+
+Show answer
+
+15\. Find students who do not live in Delhi.
+
+Show answer
+
+16\. Find students who live in Delhi and have marks between 80 and 90.
+
+Show answer
+
+17\. Find students whose marks are not between 70 and 80.
+
+Show answer
+
+18\. Find students whose age is greater than 22 or marks are greater than 85.
+
+Show answer
+
+19\. Find students whose marks are greater than 70 and city is not Delhi.
+
+Show answer
+
+20\. Find students whose IDs are 1, 3, or 5.
+
+Show answer
+
+Show all answers
+
+## 4. MySQL Interview Questions and Answers
+
+Q1. What is the WHERE clause?
+
+Answer: The WHERE clause filters records based on a specified condition.
+
+Q2. Can we use WHERE with UPDATE?
+
+Answer: Yes. It specifies which records should be modified.
+
+```
+UPDATE students
+SET marks = 95
+WHERE id = 1;
+```
+
+Q3. What happens if we omit WHERE from a DELETE query?
+
+Answer: All rows in the table will be deleted.
+
+Q4. What is the difference between AND and OR?
+
+Answer: AND requires all specified conditions to be true, whereas OR requires at least one condition to be true.
+
+Q5. Can we use multiple conditions in WHERE?
+
+Answer: Yes. We can combine conditions using AND, OR, and parentheses.
+
+Q6. What is the difference between WHERE and HAVING?
+
+Answer: WHERE filters individual rows before grouping, whereas HAVING filters groups after `GROUP BY`.
+
+Q7. How do we check for NULL values?
+
+Answer: Use `IS NULL` or `IS NOT NULL`.
+
+```
+SELECT *
+FROM students
+WHERE city IS NOT NULL;
+```
+
+Q8. Can WHERE be used with SELECT, UPDATE, and DELETE?
+
+Answer: Yes. WHERE filters the rows affected by these commands.
+
+## 5. Quick Revision
+
+| Operator  | Meaning                             |
+| --------- | ----------------------------------- |
+| `=`       | Equal to                            |
+| `<>`      | Not equal to                        |
+| `>`       | Greater than                        |
+| `<`       | Less than                           |
+| `>=`      | Greater than or equal to            |
+| `<=`      | Less than or equal to               |
+| `AND`     | All conditions must be true         |
+| `OR`      | At least one condition must be true |
+| `IN`      | Matches values in a list            |
+| `BETWEEN` | Matches a range                     |
+| `LIKE`    | Matches a text pattern              |
+| `IS NULL` | Checks for missing values           |
+
+Next step: Practise writing the 20 queries in MySQL Workbench or your MySQL terminal. Then move to `ORDER BY`, `DISTINCT`, and `GROUP BY` for fresher interviews.
+///////////////////////////////////////////////////////////////////
+
+//alter
+Let's learn only the `ALTER` command in MySQL, using one table and showing the changes step by step.
+
+## 1. Create one table first
+
+```
+CREATE TABLE students (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    age INT,
+    city VARCHAR(50)
+);
+```
+
+Insert sample data:
+
+```
+INSERT INTO students (id, name, age, city)
+VALUES
+(1, 'Amit', 25, 'Delhi'),
+(2, 'Rahul', 23, 'Noida'),
+(3, 'Priya', 24, 'Pune');
+```
+
+Initial table:
+
+| id | name  | age | city  |
+| -- | ----- | --- | ----- |
+| 1  | Amit  | 25  | Delhi |
+| 2  | Rahul | 23  | Noida |
+| 3  | Priya | 24  | Pune  |
+
+## 2. ALTER ADD — Add a new column
+
+```
+ALTER TABLE students
+ADD email VARCHAR(100);
+```
+
+Change: A new `email` column is added. Existing rows contain `NULL` in this column.
+
+| id | name  | age | city  | email |
+| -- | ----- | --- | ----- | ----- |
+| 1  | Amit  | 25  | Delhi | NULL  |
+| 2  | Rahul | 23  | Noida | NULL  |
+| 3  | Priya | 24  | Pune  | NULL  |
+
+## 3. ALTER MODIFY — Change a column's data type or size
+
+```
+ALTER TABLE students
+MODIFY COLUMN name VARCHAR(100);
+```
+
+Change: The maximum name length increases from 50 to 100 characters. Existing names remain unchanged.
+
+Check the structure:
+
+```
+DESCRIBE students;
+```
+
+## 4. ALTER RENAME COLUMN — Rename a column
+
+```
+ALTER TABLE students
+RENAME COLUMN name TO student_name;
+```
+
+Change: The column `name` is now called `student_name`.
+
+| id | student_name | age | city  | email |
+| -- | ------------ | --- | ----- | ----- |
+| 1  | Amit         | 25  | Delhi | NULL  |
+| 2  | Rahul        | 23  | Noida | NULL  |
+| 3  | Priya        | 24  | Pune  | NULL  |
+
+This syntax works in MySQL 8.0+.
+
+## 5. ALTER DROP COLUMN — Remove a column
+
+```
+ALTER TABLE students
+DROP COLUMN email;
+```
+
+Change: The `email` column and its data are permanently removed from the table.
+
+| id | student_name | age | city  |
+| -- | ------------ | --- | ----- |
+| 1  | Amit         | 25  | Delhi |
+| 2  | Rahul        | 23  | Noida |
+| 3  | Priya        | 24  | Pune  |
+
+## 6. ALTER RENAME TABLE — Rename the entire table
+
+```
+ALTER TABLE students
+RENAME TO college_students;
+```
+
+Change: The table is now named `college_students`. Its rows and columns remain the same.
+
+To check it:
+
+```
+SELECT * FROM college_students;
+```
+
+## 7. ALTER ADD DEFAULT — Set a default value
+
+Assuming the table is still named `college_students`:
+
+```
+ALTER TABLE college_students
+ADD country VARCHAR(50) DEFAULT 'India';
+```
+
+Change: A new `country` column is added with the default value `India`. Existing rows may also show that default value, depending on the MySQL version and operation.
+
+## Quick revision
+
+| Operation         | Purpose                           |
+| ----------------- | --------------------------------- |
+| `ADD`             | Add a column                      |
+| `MODIFY COLUMN`   | Change a column's definition      |
+| `RENAME COLUMN`   | Rename a column                   |
+| `DROP COLUMN`     | Remove a column                   |
+| `RENAME TO`       | Rename the table                  |
+| `ADD ... DEFAULT` | Add a column with a default value |
+
+## Practice question 1
+
+Your table is `college_students`, with columns `id`, `student_name`, `age`, `city`, and `country`.
+
+Question: Write an `ALTER` query to add a new column named `salary` with data type `DECIMAL(10,2)`.
+
+Try it yourself.
+//////////////////////////////////////////////////////////////////////////////////
+//reanme
+## MySQL ALTER — RENAME
+
+There are two common ways to rename using `ALTER`.
+
+### 1. Rename a column
+
+Suppose your table is `college_students`:
+
+Before:
+
+| id | student_name | age |
+| -- | ------------ | --- |
+| 1  | Amit         | 25  |
+| 2  | Rahul        | 23  |
+
+Query:
+
+```
+ALTER TABLE college_students
+RENAME COLUMN student_name TO name;
+```
+
+After:
+
+| id | name  | age |
+| -- | ----- | --- |
+| 1  | Amit  | 25  |
+| 2  | Rahul | 23  |
+
+Explanation: `student_name` is renamed to `name`. The existing data remains unchanged.
+
+### 2. Rename a table
+
+```
+ALTER TABLE college_students
+RENAME TO students;
+```
+
+Explanation: The table name changes from `college_students` to `students`. Its data remains unchanged.
+
+### Practice question
+
+Your table is named `students`. Write a query to rename the column `city` to `address`.
+
+Try writing the SQL query yourself.
+///////////////////////////////////////////////////////////////////
+//truncate
+## MySQL TRUNCATE Command
+
+The `TRUNCATE` command removes all rows from a table, but keeps the table structure (columns and data types).
+
+### 1. Before TRUNCATE
+
+Suppose we have this table:
+
+```
+SELECT * FROM students;
+```
+
+| id | name  | age | city  |
+| -- | ----- | --- | ----- |
+| 1  | Amit  | 25  | Delhi |
+| 2  | Rahul | 23  | Noida |
+| 3  | Priya | 24  | Pune  |
+
+### 2. Apply TRUNCATE
+
+```
+TRUNCATE TABLE students;
+```
+
+Explanation:
+
+- `TRUNCATE TABLE` removes all rows.
+- The table structure remains.
+- You cannot specify a `WHERE` condition.
+- In MySQL, `TRUNCATE` is a DDL operation and generally cannot be rolled back.
+
+### 3. After TRUNCATE
+
+```
+SELECT * FROM students;
+```
+
+| id      | name | age | city |
+| ------- | ---- | --- | ---- |
+| No rows |      |     |      |
+
+The table still exists, but it is empty.
+
+### 4. TRUNCATE vs DELETE vs DROP
+
+| Command                    | Removes rows | Removes table structure |
+| -------------------------- | ------------ | ----------------------- |
+| `DELETE FROM students;`    | Yes          | No                      |
+| `TRUNCATE TABLE students;` | All rows     | No                      |
+| `DROP TABLE students;`     | Yes          | Yes                     |
+
+Interview tip: `DELETE` can remove selected rows using `WHERE`, whereas `TRUNCATE` removes all rows without a `WHERE` condition.
+
+## Practice question
+
+You have a table named `employees`. Write the SQL query to remove all records while keeping the table structure.
+
+Try it yourself!
+///////////////////////////////////////////////////////////////////////
+//distinct keyword
+
+## MySQL DISTINCT Keyword
+
+The `DISTINCT` keyword is used to remove duplicate values from query results. It does not delete data from the original table.
+
+### 1. Create a sample table
+
+```
+CREATE TABLE students (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    city VARCHAR(50)
+);
+```
+
+Insert data:
+
+```
+INSERT INTO students (id, name, city)
+VALUES
+(1, 'Amit', 'Delhi'),
+(2, 'Rahul', 'Noida'),
+(3, 'Priya', 'Delhi'),
+(4, 'Neha', 'Pune'),
+(5, 'Rohit', 'Noida');
+```
+
+Our table:
+
+| id | name  | city  |
+| -- | ----- | ----- |
+| 1  | Amit  | Delhi |
+| 2  | Rahul | Noida |
+| 3  | Priya | Delhi |
+| 4  | Neha  | Pune  |
+| 5  | Rohit | Noida |
+
+### 2. Without DISTINCT
+
+```
+SELECT city FROM students;
+```
+
+Result:
+
+| city  |
+| ----- |
+| Delhi |
+| Noida |
+| Delhi |
+| Pune  |
+| Noida |
+
+Duplicate cities appear.
+
+### 3. With DISTINCT
+
+```
+SELECT DISTINCT city FROM students;
+```
+
+Result:
+
+| city  |
+| ----- |
+| Delhi |
+| Noida |
+| Pune  |
+
+Each city appears only once in the result.
+
+### 4. DISTINCT on multiple columns
+
+```
+SELECT DISTINCT city, name
+FROM students;
+```
+
+This removes duplicate combinations of city and name. Since each combination in our example is unique, all five rows are returned.
+
+### 5. DISTINCT with COUNT
+
+Count how many unique cities exist:
+
+```
+SELECT COUNT(DISTINCT city) AS total_cities
+FROM students;
+```
+
+Output:
+
+| total_cities |
+| ------------ |
+| 3            |
+
+## Quick revision
+
+| Query                                        | Purpose               |
+| -------------------------------------------- | --------------------- |
+| `SELECT city FROM students;`                 | Shows all city values |
+| `SELECT DISTINCT city FROM students;`        | Shows unique cities   |
+| `SELECT COUNT(DISTINCT city) FROM students;` | Counts unique cities  |
+
+Remember: `DISTINCT` affects the query result, not the actual records stored in the table.
+
+## Practice question 1
+
+Using the same `students` table, write a query to display all unique student names.
+
+Try it yourself!
+//////////////////////////////////////////////////////////////////////////
