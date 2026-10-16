@@ -281,6 +281,45 @@ Bilkul. Interview ke liye **OOPs + 4 pillars ki short and clear definitions** ya
 
 Example: `private` variables + getter/setter.
 
+
+class Student {
+    private String name;
+    private int age;
+
+    // Setter methods
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    // Getter methods
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s = new Student();
+
+        // Set values
+        s.setName("Amit");
+        s.setAge(25);
+
+        // Get values
+        System.out.println(s.getName());
+        System.out.println(s.getAge());
+    }
+}
+
+////////////////////////////////////////////////////////////////
 ---
 
 ### 2. Inheritance
@@ -316,7 +355,38 @@ Achieved using:
 
 * Abstract class
 * Interface
+///////////////////////////
 
+abstract class Animal {
+
+    // Abstract method
+    abstract void sound();
+
+    // Normal method
+    void eat() {
+        System.out.println("Animal is eating");
+    }
+}
+
+class Dog extends Animal {
+
+    @Override
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Dog d = new Dog();
+
+        d.sound();
+        d.eat();
+    }
+}
+
+/////////////////////////////
 ---
 
 ### 🔥 One-line revision
