@@ -1696,3 +1696,143 @@ Using the same `students` table, write a query to display all unique student nam
 
 Try it yourself!
 //////////////////////////////////////////////////////////////////////////
+
+/
+/
+/.
+/
+/
+
+.
+..
+
+
+
+///SQL QUERY
+
+Here are the 5 most important MySQL interview queries with answers and explanations in simple English for a Java Backend Developer fresher interview.
+
+Assume we have an `employees` table with these columns: `id`, `name`, `salary`, and `department`.
+
+## 1. Find the second-highest salary
+
+SQL Query:
+
+```
+SELECT MAX(salary) AS second_highest_salary
+FROM employees
+WHERE salary < (
+    SELECT MAX(salary)
+    FROM employees
+);
+```
+
+Explanation:
+
+- The inner query finds the highest salary.
+- The outer query finds the maximum salary that is less than the highest salary.
+- This gives us the second-highest distinct salary.
+
+Interview answer: “First, I find the highest salary using `MAX()`. Then, I find the maximum salary that is less than the highest salary.”
+
+## 2. Find duplicate records in a table
+
+For example, find duplicate employee names.
+
+SQL Query:
+
+```
+SELECT name, COUNT(*) AS total
+FROM employees
+GROUP BY name
+HAVING COUNT(*) > 1;
+```
+
+Explanation:
+
+- `GROUP BY name` groups employees with the same name.
+- `COUNT(*)` counts how many times each name appears.
+- `HAVING COUNT(*) > 1` displays only duplicate names.
+
+Interview answer: “I use `GROUP BY` to group identical names and `HAVING COUNT(*) > 1` to find duplicate names.”
+
+## 3. Find employees whose salary is greater than the average salary
+
+SQL Query:
+
+```
+SELECT *
+FROM employees
+WHERE salary > (
+    SELECT AVG(salary)
+    FROM employees
+);
+```
+
+Explanation:
+
+- The inner query calculates the average salary using `AVG()`.
+- The outer query returns employees whose salaries are greater than the average.
+
+Interview answer: “I use a subquery to calculate the average salary, then select employees whose salaries are greater than that average.”
+
+## 4. Count employees department-wise
+
+SQL Query:
+
+```
+SELECT department, COUNT(*) AS total_employees
+FROM employees
+GROUP BY department;
+```
+
+Explanation:
+
+- `GROUP BY department` groups employees by department.
+- `COUNT(*)` counts the employees in each department.
+
+Interview answer: “I use `GROUP BY` to group employees by department and `COUNT(*)` to calculate the number of employees in each department.”
+
+## 5. Find the highest salary in each department
+
+SQL Query:
+
+```
+SELECT department, MAX(salary) AS highest_salary
+FROM employees
+GROUP BY department;
+```
+
+Explanation:
+
+- `GROUP BY department` creates a group for each department.
+- `MAX(salary)` finds the highest salary in each group.
+
+Interview answer: “I use `GROUP BY` with the `MAX()` function to find the highest salary in each department.”
+
+If the interviewer asks you to find the names of employees who earn the highest salary in each department, use this query:
+
+```
+SELECT e.*
+FROM employees e
+WHERE e.salary = (
+    SELECT MAX(e2.salary)
+    FROM employees e2
+    WHERE e2.department = e.department
+);
+```
+
+This query returns all employees earning the highest salary in their respective departments, including employees who share the same highest salary.
+
+## Quick revision for your interview
+
+| SQL concept | Purpose                          |
+| ----------- | -------------------------------- |
+| `MAX()`     | Finds the maximum value          |
+| `AVG()`     | Calculates the average           |
+| `COUNT()`   | Counts records                   |
+| `GROUP BY`  | Groups rows with matching values |
+| `HAVING`    | Filters groups                   |
+| Subquery    | A query inside another query     |
+
+My advice: Learn the SQL query and the short interview answer for each question. You do not need to memorize every word; understand the logic so you can explain it confidently.
