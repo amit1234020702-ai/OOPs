@@ -1,0 +1,147 @@
+
+
+# 100 Java Interview Questions
+
+## 1. Core Java Basics (1–15)
+
+1. What is Java?
+2. What are the main features of Java?
+3. Why is Java platform-independent?
+4. What is the difference between JDK, JRE, and JVM?
+5. What is bytecode in Java?
+6. What is the difference between compiled and interpreted languages?
+7. What are variables in Java?
+8. What are the different data types in Java?
+9. What is the difference between primitive and non-primitive data types?
+10. What is type casting in Java?
+11. What is the difference between implicit and explicit type casting?
+12. What are operators in Java?
+13. What is the difference between `==` and `equals()`?
+14. What is the difference between `break` and `continue`?
+15. What is the difference between `while` and `do-while` loops?
+
+## 2. OOP Concepts (16–30)
+
+16. What is Object-Oriented Programming (OOP)?
+17. What are the four pillars of OOP?
+18. What is a class in Java?
+19. What is an object in Java?
+20. What is inheritance?
+21. What are the different types of inheritance?
+22. Why does Java not support multiple inheritance through classes?
+23. What is polymorphism?
+24. What is the difference between compile-time and runtime polymorphism?
+25. What is method overloading?
+26. What is method overriding?
+27. What is encapsulation?
+28. What is abstraction?
+29. What is the difference between abstraction and encapsulation?
+30. What is the difference between an abstract class and an interface?
+
+## 3. Constructors, Keywords and Methods (31–40)
+
+31. What is a constructor in Java?
+32. What are the different types of constructors?
+33. What is constructor overloading?
+34. What is the difference between a constructor and a method?
+35. What is the `this` keyword?
+36. What is the `super` keyword?
+37. What is the `static` keyword in Java?
+38. What is the `final` keyword?
+39. What is the difference between `final`, `finally`, and `finalize()`?
+40. Can we override a static method in Java?
+
+## 4. String Handling (41–50)
+
+41. What is a String in Java?
+42. Why are Strings immutable in Java?
+43. What is the String Constant Pool?
+44. What is the difference between String, StringBuilder, and StringBuffer?
+45. What is the difference between `==` and `equals()` when comparing Strings?
+46. How do you reverse a String in Java?
+47. How do you check whether a String is a palindrome?
+48. What is the difference between `substring()` and `subSequence()`?
+49. What is the purpose of the `intern()` method?
+50. How do you check whether two Strings are anagrams?
+
+## 5. Exception Handling (51–60)
+
+51. What is an exception in Java?
+52. What is exception handling?
+53. What are the different types of exceptions?
+54. What is the difference between checked and unchecked exceptions?
+55. What is the difference between an exception and an error?
+56. What is the use of try-catch blocks?
+57. What is the purpose of the finally block?
+58. Can we use multiple catch blocks?
+59. What is the difference between `throw` and `throws`?
+60. How do you create a custom exception in Java?
+
+## 6. Collections Framework (61–75)
+
+61. What is the Java Collections Framework?
+62. What is the difference between Collection and Collections?
+63. What is the difference between List, Set, and Map?
+64. What is an ArrayList?
+65. What is a LinkedList?
+66. What is the difference between ArrayList and LinkedList?
+67. What is a HashSet?
+68. What is the difference between HashSet and TreeSet?
+69. What is a HashMap?
+70. How does HashMap work internally?
+71. What is the difference between HashMap and Hashtable?
+72. What is the difference between HashMap and ConcurrentHashMap?
+73. What is the difference between HashMap and LinkedHashMap?
+74. What is the difference between Comparable and Comparator?
+75. What is fail-fast and fail-safe behavior in Java?
+
+## 7. Multithreading (76–85)
+
+76. What is multithreading in Java?
+77. What is the difference between a process and a thread?
+78. How can you create a thread in Java?
+79. What is the difference between extending Thread and implementing Runnable?
+80. What is the thread life cycle?
+81. What is synchronization in Java?
+82. What is a deadlock?
+83. What is the difference between `sleep()` and `wait()`?
+84. What is the difference between `notify()` and `notifyAll()`?
+85. What is the volatile keyword in Java?
+
+## 8. Java 8 Features (86–95)
+
+86. What are the main features introduced in Java 8?
+87. What is a lambda expression?
+88. What is a functional interface?
+89. What is the Stream API?
+90. What is the difference between `map()` and `filter()`?
+91. What is the difference between `forEach()` and `forEachOrdered()`?
+92. What is the Optional class in Java?
+93. What are method references?
+94. What is the difference between intermediate and terminal operations in Streams?
+95. What is the difference between sequential and parallel streams?
+
+## 9. Advanced Java Concepts (96–100)
+
+96. What is garbage collection in Java?
+97. What is the difference between stack and heap memory?
+98. What is serialization and deserialization?
+99. What is JDBC, and how does it work?
+100. What is the difference between an Array and an ArrayList?
+
+## How to prepare these 100 questions
+
+My recommendation is to prepare them in this order:
+
+| Day   | Topics                  | Questions |
+| ----- | ----------------------- | --------- |
+| Day 1 | Core Java Basics        | 1–15      |
+| Day 2 | OOP Concepts            | 16–30     |
+| Day 3 | Constructors & Keywords | 31–40     |
+| Day 4 | Strings                 | 41–50     |
+| Day 5 | Exception Handling      | 51–60     |
+| Day 6 | Collections             | 61–75     |
+| Day 7 | Multithreading          | 76–85     |
+| Day 8 | Java 8                  | 86–95     |
+| Day 9 | Advanced Java           | 96–100    |
+
