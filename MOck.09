@@ -502,3 +502,208 @@ High Priority
 10. JVM, JDK and JRE
 
 Practice tip: Read 10 questions daily, speak each answer aloud in English, and try to explain it without looking.
+........................................................................................................................
+
+
+# 50 Important Spring Boot Interview Questions with Short Answers
+
+These questions are specially selected for Java Backend Developer / Spring Boot Developer Fresher Interviews.
+
+All answers are in simple English, so you can easily understand and speak them during interviews.
+
+## 1. Spring & Spring Boot Basics (1–10)
+
+1\. What is Spring Framework?\
+Spring is a Java framework used to develop enterprise applications.
+
+2\. What is Spring Boot?\
+Spring Boot is built on Spring and simplifies application development with auto-configuration and starter dependencies.
+
+3\. Why do we use Spring Boot?\
+To develop production-ready applications quickly with less configuration.
+
+4\. What are the main features of Spring Boot?\
+Auto-configuration, starter dependencies, embedded servers and production-ready features.
+
+5\. What is the difference between Spring and Spring Boot?\
+Spring requires more manual configuration. Spring Boot provides auto-configuration and simplifies setup.
+
+6\. What is IoC?\
+IoC stands for Inversion of Control. It means Spring manages object creation and dependencies.
+
+7\. What is Dependency Injection?\
+DI is a technique of providing required objects to a class instead of creating them manually.
+
+8\. What are the types of Dependency Injection?\
+Constructor Injection, Setter Injection and Field Injection.
+
+9\. What is a Spring Bean?\
+A Spring Bean is an object managed by the Spring IoC container.
+
+10\. What is IoC Container?\
+It is responsible for creating, configuring and managing Spring Beans.
+
+## 2. Spring Annotations (11–20)
+
+11\. What is @SpringBootApplication?\
+It combines @Configuration, @EnableAutoConfiguration and @ComponentScan.
+
+12\. What is @Component?\
+It marks a class as a Spring-managed component.
+
+13\. What is @Controller?\
+It marks a class as an MVC controller that usually returns view names.
+
+14\. What is @RestController?\
+It combines @Controller and @ResponseBody to return data directly, usually JSON.
+
+15\. What is @Service?\
+It marks a class as a service or business logic layer.
+
+16\. What is @Repository?\
+It marks a data access component and supports exception translation.
+
+17\. What is @Autowired?\
+It tells Spring to inject a required dependency automatically.
+
+18\. What is @Bean?\
+It declares a method whose returned object is managed by Spring.
+
+19\. What is @Configuration?\
+It marks a class as a source of Spring bean definitions.
+
+20\. What is @Value?\
+It injects values from application properties or other supported property sources.
+
+## 3. REST API & HTTP Methods (21–30)
+
+21\. What is REST API?\
+REST API allows applications to communicate using HTTP methods and resources.
+
+22\. What is @RequestMapping?\
+It maps HTTP requests to controller methods or classes.
+
+23\. What is @GetMapping?\
+It handles HTTP GET requests.
+
+24\. What is @PostMapping?\
+It handles HTTP POST requests, commonly used to create resources.
+
+25\. What is @PutMapping?\
+It handles HTTP PUT requests, commonly used to replace a resource.
+
+26\. What is @DeleteMapping?\
+It handles HTTP DELETE requests.
+
+27\. What is @PathVariable?\
+It extracts values from the URL path.
+
+28\. What is @RequestParam?\
+It extracts query parameters from the URL.
+
+29\. What is @RequestBody?\
+It converts the HTTP request body into a Java object.
+
+30\. What is ResponseEntity?\
+ResponseEntity represents an HTTP response with a body, status code and headers.
+
+## 4. Spring Data JPA & Hibernate (31–40)
+
+31\. What is JPA?\
+JPA is a Java specification for managing relational database data using objects.
+
+32\. What is Hibernate?\
+Hibernate is an ORM framework and an implementation of JPA.
+
+33\. What is Spring Data JPA?\
+It simplifies database operations by providing repository interfaces.
+
+34\. What is JpaRepository?\
+It provides ready-made methods for CRUD operations, pagination and sorting.
+
+35\. What is @Entity?\
+It marks a Java class as a database entity.
+
+36\. What is @Id?\
+It marks the primary key field of an entity.
+
+37\. What is @GeneratedValue?\
+It specifies how primary key values are generated.
+
+38\. What is @OneToOne?\
+It defines a one-to-one relationship between two entities.
+
+39\. What is @OneToMany?\
+It defines a relationship where one entity is associated with multiple entities.
+
+40\. What is @ManyToOne?\
+It defines a relationship where many entities are associated with one entity.
+
+## 5. Advanced Spring Boot (41–50)
+
+41\. What is application.properties?\
+It is a configuration file used to define application settings.
+
+42\. What is application.yml?\
+It is another configuration file that uses YAML format.
+
+43\. What is Spring Boot DevTools?\
+It helps developers by providing features such as automatic application restart during development.
+
+44\. What is Spring Boot Actuator?\
+It provides endpoints to monitor and manage application health and metrics.
+
+45\. What is @Transactional?\
+It manages database transactions around method execution.
+
+46\. What is global exception handling?\
+It handles application exceptions centrally using @ControllerAdvice or @RestControllerAdvice.
+
+47\. What is DTO?\
+DTO stands for Data Transfer Object. It transfers data between application layers or between client and server.
+
+48\. What is Spring Security?\
+It is a framework used to secure applications through authentication and authorization.
+
+49\. What is JWT?\
+JWT stands for JSON Web Token. It is commonly used to securely transmit claims and implement token-based authentication.
+
+50\. What is pagination and sorting?\
+Pagination divides records into smaller pages, while sorting arranges records in a specific order.
+
+## Most important topics for your interview
+
+High Priority
+
+1. Dependency Injection and IoC
+2. Spring Beans
+3. @Component, @Service, @Repository
+4. @RestController
+5. GET, POST, PUT and DELETE
+6. Spring Data JPA
+7. Hibernate
+8. Entity relationships
+9. Exception Handling
+10. Spring Security and JWT
+11. DTO and ModelMapper
+12. Pagination and Sorting
+13. @Transactional
+
+## Practical Spring Boot interview questions
+
+Also prepare these coding questions:
+
+| No. | Practical question                             |
+| --- | ---------------------------------------------- |
+| 1   | How do you create a REST API in Spring Boot?   |
+| 2   | How do you connect Spring Boot with MySQL?     |
+| 3   | How do you perform CRUD operations?            |
+| 4   | How do you implement JWT authentication?       |
+| 5   | How do you handle exceptions globally?         |
+| 6   | How do you validate request data?              |
+| 7   | How do you implement pagination?               |
+| 8   | How do you create entity relationships?        |
+| 9   | How do you implement role-based authorization? |
+| 10  | How do you test REST APIs using Postman?       |
+
+My advice: Since you are targeting Java Backend Developer roles, prepare Core Java + MySQL + Spring Boot together. Practise explaining your Electronic Store and Fitness projects using these concepts.
